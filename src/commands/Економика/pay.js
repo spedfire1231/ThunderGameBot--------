@@ -1,0 +1,87 @@
+const{ Client, Message, MessageEmbed } = require('discord.js')
+
+module.exports = {
+    name: 'tansferbank',
+    aliases: ['перевод'],
+
+    /**
+    *@param {Client} client
+    *@param {Message} message
+    *@param {String[]} args
+    */
+
+    run: async (client,message,args) => { 
+
+        const user = message.mentions.users.first()
+
+        const user2 = message.author.id
+
+        let sendTo = args[0]
+
+        const embed2 = new MessageEmbed()
+
+        .setTitle('Подсказка!')
+        .setColor('BLUE')
+        .setDescription('Выберите человека которому хотите перевести деньги на счёт')
+        .setTimestamp()
+        .setFooter('Версия - 0.1 ВЕТА')
+
+        if(!args[0]) return message.channel.send(embed2)
+
+        let coinsToDonate = args[1]
+
+        const convert = parseInt(coinsToDonate)
+
+        const embed3 = new MessageEmbed()
+
+        .setTitle('Подсказка!')
+        .setColor('BLUE')
+        .setDescription('Введите число которое хотите перевести человеку на счёт')
+        .setTimestamp()
+        .setFooter('Версия - 0.1 ВЕТА')
+
+        if(!args[1]) return message.channel.send(embed3)
+
+        const coins = await client.bank(message.member.id)
+
+        const newbalus = await client.addbank(user.id, convert)
+
+        if(args[1].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
+
+        const newbal = await client.rmvbank(user2, convert)
+
+        const embednocash = new MessageEmbed()
+    
+        .setTitle('Подсказка! THUNDER CENTRAL BANK')
+        .setColor('RANDOM')
+        .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${coins}$** !`)
+        .setTimestamp()
+    
+        if (parseInt(args[1]) > coins) return message.channel.send(embednocash)
+
+        if(user.id === '871074592234561546') return message.channel.send('Это бот')
+
+        const embednum = new MessageEmbed()
+
+        .setTitle('💡 Подсказка! 💡')
+        .setColor('BLUE')
+        .setDescription('Пожалуйста, введите число, а не символ которое хотите положить на банковский счёт!')
+        .setTimestamp()
+    
+        if(isNaN(args[1])) return message.channel.send(embednum)
+
+        const embed = new MessageEmbed()
+
+        .setTitle('Перевод средств успешно произведён!')
+        .setColor('GREEN')
+        .setDescription(`Вы успешно перевели на банковский счёт ${sendTo} - **${coinsToDonate}$**!`)
+        .setTimestamp()
+        .setFooter('Thunder Bot - v 0.1 BETA')
+        .setThumbnail(user.displayAvatarURL({dynamic: true}))
+
+        message.channel.send(embed)
+
+
+    }
+}
+
