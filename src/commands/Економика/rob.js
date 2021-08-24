@@ -2,7 +2,7 @@ const{ Client, Message, MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: 'ограбить',
-    //cooldown: 1000 * 60 * 60 * 2, // 2 часа
+    cooldown: 1000 * 60 * 60 * 2, // 2 часа
     
 
     run: async (client,message,args) => { 
