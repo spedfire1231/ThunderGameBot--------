@@ -1,8 +1,7 @@
 const{ Client, Message, MessageEmbed } = require('discord.js')
 
 module.exports = {
-    name: 'bal',
-    aliases: ['баланс'],
+    name: 'баланс',
 
     /**
     *@param {Client} client

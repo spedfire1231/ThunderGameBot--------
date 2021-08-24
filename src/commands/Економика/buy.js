@@ -5,8 +5,7 @@ const inventory = require('../../models/inventory')
 const items = require('../../shopitems')
 
 module.exports = {
-    name: 'buy',
-    aliases:['купить'],
+    name: 'купить',
 
     /**
     *@param {Client} client

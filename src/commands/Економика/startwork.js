@@ -3,8 +3,7 @@ const{ Client, Message, MessageEmbed } = require('discord.js')
 const job = require('../../models/job')
 
 module.exports = {
-    name: 'startwork',
-    aliases: ['работать'],
+    name: 'работать',
     
 
     run: async (client,message,args) => { 

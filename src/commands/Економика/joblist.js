@@ -3,8 +3,7 @@ const{ Client, Message, MessageEmbed } = require('discord.js')
 const jobs = require ('../../jobs')
 
 module.exports = {
-    name: 'joblist',
-    aliases: ['работы'],
+    name: 'работы',
 
     /**
     *@param {Client} client

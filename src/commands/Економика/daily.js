@@ -1,8 +1,7 @@
 const{ Client, Message, MessageEmbed } = require('discord.js')
 
 module.exports = {
-    name: 'daily',
-    aliases:['бонус'],
+    name: 'бонус',
     cooldown: 1000 * 60 * 60 * 24, // 24 часа
 
 

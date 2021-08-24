@@ -5,8 +5,7 @@ const inventory = require('../../models/inventory')
 const job = require('../../models/job')
 
 module.exports = {
-    name: 'profile',
-    aliases: ['профиль'],
+    name: 'профиль',
 
     /**
     *@param {Client} client

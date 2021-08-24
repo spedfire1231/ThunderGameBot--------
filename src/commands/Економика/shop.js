@@ -3,8 +3,7 @@ const{ Client, Message, MessageEmbed } = require('discord.js')
 const items = require ('../../shopitems')
 
 module.exports = {
-    name: 'shop',
-    aliases: ['магазин'],
+    name: 'магазин',
 
     /**
     *@param {Client} client
