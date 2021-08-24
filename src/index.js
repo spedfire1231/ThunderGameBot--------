@@ -36,6 +36,11 @@ client.bank = (userId) => new Promise(async ful =>{
     ful(data.bankcoins);
 })
 
+client.on("guildMemberAdd", member => {
+    const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'основной')
+    welcomeChannel.send (`Добро покажловать! Для того чтобы посмотреть помощь введите - **!помощь** . Желаем удачи! ${member}`)
+})
+
 
 client.add = (id, coins) => {
     schema.findOne({ id}, async(err, data) => {
