@@ -36,7 +36,6 @@ module.exports = {
                 .addField('**Кошелёк:** ', `${bal}$`)
                 .addField('**Банковский счёт:** ', `${bank}$`)
                 .addField('**Профессия: **', `Отсутствует!`)
-                .addField('**Имущество: **', `Отсутствует!`)
                 .setTimestamp()
                 .setFooter('Версия - 0.1 BETA')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
@@ -69,6 +68,7 @@ module.exports = {
                     })
                     .join(', ')
 
+
                     const withoutall = new MessageEmbed()
 
                     .setTitle('Профиль игрока:')
@@ -81,9 +81,10 @@ module.exports = {
                     .setTimestamp()
                     .setFooter('Версия - 0.1 BETA')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            
-                    if(!dataInv.Inventory, !dataJob) return message.channel.send(withoutall)
+    
+                    if(!dataJob) return message.channel.send(withoutall)
 
+                    
                     const withoutjob = new MessageEmbed()
 
                     .setTitle('Профиль игрока:')

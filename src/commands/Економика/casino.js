@@ -2,6 +2,7 @@ const{ Client, Message, MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: 'казино',
+    cooldown: 10000, //  часа
 
     /**
     *@param {Client} client

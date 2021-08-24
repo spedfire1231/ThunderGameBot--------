@@ -4,6 +4,7 @@ const job = require('../../models/job')
 
 module.exports = {
     name: 'работать',
+    cooldown: 1000 * 10, // 2 часа
     
 
     run: async (client,message,args) => { 
