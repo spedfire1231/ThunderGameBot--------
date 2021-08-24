@@ -96,6 +96,6 @@ client.job = (id) => new Promise(async ful =>{
     ful(data.job);
 })
 
-// client.login(config.token)
+client.login(config.token)
 
-client.login(process.env.token);
+//client.login(process.env.token);

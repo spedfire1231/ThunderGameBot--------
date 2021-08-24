@@ -29,10 +29,6 @@ module.exports = {
 
     const bal = await client.bal(message.member.id)
 
-    const surprise = await client.rmv(message.member.id, casinopool)
-
-    const winner = await client.add(message.member.id, casinopool)
-
     const minusembed = new MessageEmbed()
 
     .setTitle('Подсказка! 🎲 THUNDER CASINO 🎲')
@@ -49,7 +45,7 @@ module.exports = {
     .setDescription(`У Вас недостаточно средств! На Вашем балансе - **${bal}$**`)
     .setTimestamp()
 
-    if (parseInt(casinopool) > bal) return message.channel.send(embednocash)
+    if(args[0] > bal) return message.channel.send(embednocash)+await client.add(message.member.id, +0)
 
     const result = Math.floor(Math.random() * 6) + 1;
 

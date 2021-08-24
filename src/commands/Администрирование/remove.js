@@ -15,18 +15,18 @@ module.exports = {
 
         if(message.member.id != '286853335854612480') return message.channel.send("У вас недостаточно прав чтобы использовать данную команду!");
 
-        if(!args[0]) return message.channel.send('Укажите игрока которому хотите убрать средства!')
+        if(!args[1]) return message.channel.send('Укажите игрока которому хотите убрать средства!')
 
-        if(!args[1]) return message.channel.send('Укажите количество денег которое хотите убрать у игрока!')
+        if(!args[0]) return message.channel.send('Укажите количество денег которое хотите убрать у игрока!')
 
 
-        client.rmv(member.id, parseInt(args[1]));
+        client.rmv(member.id, parseInt(args[0]));
 
         const embed = new MessageEmbed()
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно убрали баланс игрока <@${member.id}> на ${args[1]}`)
+        .setDescription(`Вы успешно убрали баланс игрока <@${member.id}> на ${args[0]}`)
         .setTimestamp()
         .setFooter('Версия - 0.1 ВЕТА')
 
