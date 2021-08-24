@@ -6,7 +6,7 @@ const client = new Client({
 const schema = require('./schema')
 const mongo = require('mongoose')
 
-mongo.connect("mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/test", {
+mongo.connect(process.env.MONGODB_URI || "mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/test", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
