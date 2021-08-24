@@ -13,7 +13,7 @@ module.exports = {
 
         const member = message.mentions.members.first() || message.member;
 
-        if(!message.member.id('286853335854612480')) return message.channel.send('У вас недостаточно прав чтобы использовать данную команду!')
+        if(message.member.id != '286853335854612480') return message.channel.send("У вас недостаточно прав чтобы использовать данную команду!");
 
 
         client.addbank(message.member.id, parseInt(args[0]));
