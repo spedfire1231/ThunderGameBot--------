@@ -24,7 +24,7 @@ module.exports = {
 
                 if(!data) return message.channel.send(embed111)
 
-                const pay = Math.floor(Math.random() * (300))+1
+                const pay = Math.floor(Math.random() * (300))+50
 
                 const member = message.mentions.members.first()
 
