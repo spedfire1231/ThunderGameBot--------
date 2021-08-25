@@ -4,7 +4,7 @@ module.exports = [
         price: 75000,
     },
     {
-        item: 'ford',
+        item: 'автомобиль',
         price: 50000,
     },
     {

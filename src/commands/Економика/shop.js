@@ -30,7 +30,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.1 ВЕТА')
 
-        message.channel.send(shoplist);
+        message.channel.send(shopembed);
 
     }
 }
