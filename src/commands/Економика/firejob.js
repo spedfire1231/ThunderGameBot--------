@@ -34,7 +34,6 @@ module.exports = {
         job.findOne(params, async(err, data) => {
             if(data) {
 
-                if(!data.Job) return message.channel.send('Вы никем не работаете!')
                 const hasJob = Object.keys(data.Job).includes(JobToSelect)
                 if(!hasJob) {
                     data.Job[JobToSelect] = 0
@@ -44,11 +43,7 @@ module.exports = {
                 console.log(data);
                 await job.findOneAndDelete(params, data)
             } else {
-                new job({
-                    Guild: message.guild.id,
-                    User: message.author.id,
-                    Job: JobToSelect
-                }).save()
+                message.channel.send('У вас нет работы чтобы уволиться!')
             }
 
             const embed2 = new MessageEmbed()
@@ -60,7 +55,7 @@ module.exports = {
             .setFooter('Версия - 0.1 ВЕТА')
 
 
-            message.channel.send(embed2)
+            if(data.Job) return message.channel.send(embed2)
             client.job(message.author.id, JobToSelect)
         })
     }
