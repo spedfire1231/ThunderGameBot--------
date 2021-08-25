@@ -5,7 +5,7 @@ const jobs = require('../../jobs')
 const job = require('../../models/job')
 
 module.exports = {
-    name: 'уволится',
+    name: 'уволиться',
 
     /**
     *@param {Client} client
@@ -19,7 +19,7 @@ module.exports = {
 
         .setTitle('Подсказка!')
         .setColor('BLUE')
-        .setDescription('Пожалуйста, укажите пиричину по которой Вы хотите уволится с работы')
+        .setDescription('Пожалуйста, укажите пиричину по которой Вы хотите уволиться с работы')
         .setTimestamp()
         .setFooter('Версия - 0.1 ВЕТА')
 

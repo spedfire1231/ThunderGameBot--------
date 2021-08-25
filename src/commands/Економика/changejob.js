@@ -5,7 +5,7 @@ const jobs = require('../../jobs')
 const job = require('../../models/job')
 
 module.exports = {
-    name: 'устроится',
+    name: 'устроиться',
 
     /**
     *@param {Client} client

@@ -34,7 +34,7 @@ module.exports = {
         
                 .setTitle('Работа!')
                 .setColor('GREEN')
-                .setDescription(`Вы закончили рабочую смену работая **${data.Job}ом** и заработали - **${pay} coins**`)
+                .setDescription(`Вы закончили рабочую смену работая **${data.Job}ом** и заработали - **${pay}$**`)
                 .setTimestamp()
                 .setFooter('Thunder Bot - v 0.1 BETA')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
