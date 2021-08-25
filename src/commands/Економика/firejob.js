@@ -33,6 +33,8 @@ module.exports = {
         }
         job.findOne(params, async(err, data) => {
             if(data) {
+
+                if(!data.Job) return message.channel.send('Вы никем не работаете!')
                 const hasJob = Object.keys(data.Job).includes(JobToSelect)
                 if(!hasJob) {
                     data.Job[JobToSelect] = 0
