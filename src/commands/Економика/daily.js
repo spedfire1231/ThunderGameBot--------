@@ -9,7 +9,7 @@ module.exports = {
 
 
 
-        const coins = Math.floor(Math.random() * 1000) + 1
+        const coins = Math.floor(Math.random() * 2500) + 550
 
         const embed = new MessageEmbed()
 
