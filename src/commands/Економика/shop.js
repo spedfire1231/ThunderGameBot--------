@@ -19,18 +19,18 @@ module.exports = {
         const shoplist = items
 
         .map((value, index) => {
-            return `**${index+1}** ${value.item} -> ${value.price} coins!`
+            return `**${index+1}** ${value.item} ->  ${value.price} coins!`
         });
 
         const shopembed = new MessageEmbed()
 
         .setTitle('Магазин имущества:')
         .setColor('BLUE')
-        .setDescription('**Доступное имущество для покупки:**\n **1.** Дом - 100$(Временно)\n**2.** Автомобиль - 150$(Временно)\n **3.** Квартира - 200$(Временно)\nДля покупки введите команду - **!buy**')
+        .setDescription('**Доступное имущество для покупки:**\n **1.** Дом - 750000$\n**2.** Автомобиль - 50000$\n **3.** Квартира - 50000$\nДля покупки введите команду - **!купить**')
         .setTimestamp()
         .setFooter('Версия - 0.1 ВЕТА')
 
-        message.channel.send(shopembed);
+        message.channel.send(shoplist);
 
     }
 }

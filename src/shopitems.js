@@ -1,14 +1,14 @@
 module.exports = [
     {
         item: 'дом',
-        price: 100,
+        price: 75000,
     },
     {
-        item: 'автомобиль',
-        price: 150,
+        item: 'ford',
+        price: 50000,
     },
     {
         item: 'квартира',
-        price: 200,
+        price: 50000,
     },
 ];

@@ -19,7 +19,7 @@ module.exports = {
 
         .setTitle('Ошибка!')
         .setColor('RED')
-        .setDescription('Пожалуйста выберите предмет! Команда **!shop**')
+        .setDescription('Пожалуйста выберите предмет! Команда **!магазин**')
         .setFooter('Версия - 0.1 ВЕТА')
         .setTimestamp()
 
@@ -77,6 +77,7 @@ module.exports = {
                     }
                 }).save()
             }
+
             const embed4 = new MessageEmbed()
 
             .setTitle('Успешно!')
