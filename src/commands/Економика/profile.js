@@ -24,7 +24,7 @@ module.exports = {
 
                 let user = message.author
 
-                const bal = await client.bal(message.member.id)
+                const bal = await client.bal(message.member.userId)
                 const bank = await client.bank(message.member.id)
                 const job = await client.job(message.member.id)
 

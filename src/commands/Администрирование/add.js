@@ -18,7 +18,7 @@ module.exports = {
         if(message.member.id != '286853335854612480') return message.channel.send("У вас недостаточно прав чтобы использовать данную команду!");
 
 
-        client.add(member.id, parseInt(args[0]));
+        client.add(member.userId, parseInt(args[0]));
 
         const embed = new MessageEmbed()
 

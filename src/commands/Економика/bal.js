@@ -12,74 +12,27 @@ module.exports = {
     */
 
     run: async (client,message,args) => { 
-
-        inventory.findOne({
-            Guild: message.guild.id,
-            User: message.author.id,},
-            async(err, dataInv) => {
-
-                const member = message.mentions.members.first() || message.member;
-
-                let user = message.author
         
-                const bal = await client.bal(message.member.id)
-        
-                const bank = await client.bank(message.member.id)
+        const member = message.mentions.members.first() || message.member
 
-                const vip = await client.vip(message.member.id)
+        let user = message.author
 
-                const sum = bal + bank
+        const bal = await client.bal(member.userId)
 
-                const withoutinvent = new MessageEmbed()
+        const bank = await client.bank(member.id)
 
-                .setTitle('Ваш Баланс')
-                .setColor('RANDOM')
-                .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\nОбщая сумма денежных средств - **${sum}$**\nVIP статус - Отсутствует`)
-                .setTimestamp()
-                .setThumbnail(user.displayAvatarURL({dynamic: true}))
-                .setFooter('Версия - 0.2')
+        const sum = bal + bank
 
-                if(vip == 0) return message.channel.send(withoutinvent)
+        const embed = new MessageEmbed()
 
-                const withoutinvent2 = new MessageEmbed()
+        .setTitle('Ваш Баланс:')
+        .setColor('BLUE')
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nОбщий размер Ваших средств - **${sum}$**`)
+        .setTimestamp()
+        .setThumbnail(user.displayAvatarURL({dynamic: true}))
+        .setFooter('Версия - 0.2')
 
-                .setTitle('Ваш Баланс')
-                .setColor('RANDOM')
-                .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\nОбщая сумма денежных средств - **${sum}$**\nVIP статус - Имеется`)
-                .setTimestamp()
-                .setThumbnail(user.displayAvatarURL({dynamic: true}))
-                .setFooter('Версия - 0.2')
+        message.channel.send(embed)
 
-                if(!vip == 1) return message.channel.send(withoutinvent2)
-
-
-                const mappedData = Object.keys(dataInv.Inventory)
-                    .map((key) => {
-                        return `${key}(${dataInv.Inventory[key]})`
-            })
-            .join(', ')
-
-            const newbal = new MessageEmbed()
-
-            .setTitle('Ваш Баланс')
-            .setColor('RANDOM')
-            .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\n Ваше имущество - **${mappedData}**\n Общая сумма денежных средств - **${sum}$**\nVIP статус - Отсутствует`)
-            .setTimestamp()
-            .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            .setFooter('Версия - 0.2')
-
-            if(vip == 0) return message.channel.send(newbal)
-
-            const newbal2 = new MessageEmbed()
-
-            .setTitle('Ваш Баланс')
-            .setColor('RANDOM')
-            .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\n Ваше имущество - **${mappedData}**\n Общая сумма денежных средств - **${sum}$**\nVIP статус - Имеется`)
-            .setTimestamp()
-            .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            .setFooter('Версия - 0.2')
-
-            if(vip == 1) return message.channel.send(newbal2)
-        })
     }
 }

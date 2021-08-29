@@ -24,8 +24,8 @@ client.categories = fs.readdirSync(path.resolve('src/commands'));
     require(path.resolve(`src/handlers/${handler}`))(client);
 }); 
 
-client.bal = (id) => new Promise(async ful =>{
-    const data = await schema.findOne({id});
+client.bal = (userId) => new Promise(async ful =>{
+    const data = await schema.findOne({userId});
     if(!data) return ful(0);
     ful(data.coins);
 })
@@ -48,13 +48,13 @@ client.on("guildMemberAdd", member => {
 })
 
 
-client.add = (id, coins) => {
-    schema.findOne({ id}, async(err, data) => {
+client.add = (userId, coins) => {
+    schema.findOne({ userId}, async(err, data) => {
         if(err) throw err;
         if(data) {
             data.coins += coins;
         } else {
-            data = new schema({id, coins})
+            data = new schema({userId, coins})
         }
         data.save();
     }) 
@@ -85,13 +85,13 @@ client.addbank = (userId, bankcoins) => {
     }) 
 }
 
-client.rmv = (id, coins) => {
-    schema.findOne({ id}, async(err, data) => {
+client.rmv = (userId, coins) => {
+    schema.findOne({ userId}, async(err, data) => {
         if(err) throw err;
         if(data) {
             data.coins -= coins;
         } else {
-            data = new schema({id, coins: -coins})
+            data = new schema({userId, coins: -coins})
         }
         data.save();
     }) 
