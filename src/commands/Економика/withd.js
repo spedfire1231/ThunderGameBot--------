@@ -23,8 +23,9 @@ module.exports = {
         
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно сняли со счёта ${args[0]} coins`)
+        .setDescription(`Вы успешно сняли со счёта ${args[0]}$`)
         .setTimestamp()
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
     }

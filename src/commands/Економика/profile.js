@@ -37,7 +37,7 @@ module.exports = {
                 .addField('**Банковский счёт:** ', `${bank}$`)
                 .addField('**Профессия: **', `Отсутствует!`)
                 .setTimestamp()
-                .setFooter('Версия - 0.1 BETA')
+                .setFooter('Версия - 0.2')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
 
                 if(!dataJob) return message.channel.send(withoutall)
@@ -57,7 +57,7 @@ module.exports = {
                         .addField('**Профессия: **', `${dataJob.Job}`)
                         .addField('**Имущество: **', `Отсутвутет!`)
                         .setTimestamp()
-                        .setFooter('Версия - 0.1 BETA')
+                        .setFooter('Версия - 0.2')
                         .setThumbnail(user.displayAvatarURL({dynamic: true}))
 
                         if(!dataInv) return message.channel.send(withoutinvent)
@@ -79,7 +79,7 @@ module.exports = {
                     .addField('**Профессия: **', `Отсутствует!`)
                     .addField('**Имущество: **', `Отсутствует!`)
                     .setTimestamp()
-                    .setFooter('Версия - 0.1 BETA')
+                    .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
     
                     if(!dataJob) return message.channel.send(withoutall)
@@ -95,7 +95,7 @@ module.exports = {
                     .addField('**Профессия: **', `Отсутствует!`)
                     .addField('**Имущество: **', `${mappedData}`)
                     .setTimestamp()
-                    .setFooter('Версия - 0.1 BETA')
+                    .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
             
                     if(!dataJob) return message.channel.send(withoutjob)
@@ -110,7 +110,7 @@ module.exports = {
                     .addField('**Профессия: **', `${dataJob.Job}`)
                     .addField('**Имущество: **', `${mappedData}`)
                     .setTimestamp()
-                    .setFooter('Версия - 0.1 BETA')
+                    .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
             
                     message.channel.send(page1)

@@ -21,7 +21,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Пожалуйста, укажите пиричину по которой Вы хотите уволиться с работы')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         if(!args[0]) return message.channel.send(embed1)
         const JobToSelect = args[0].toLowerCase()
@@ -52,7 +52,7 @@ module.exports = {
             .setColor('GREEN')
             .setDescription(`Вы уволились с работы по причине - ${args[0]}`)
             .setTimestamp()
-            .setFooter('Версия - 0.1 ВЕТА')
+            .setFooter('Версия - 0.2')
 
 
             if(data.Job) return message.channel.send(embed2)

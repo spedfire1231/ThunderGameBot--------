@@ -20,15 +20,19 @@ module.exports = {
                 .setColor('RED')
                 .setDescription('У Вас нет работы!')
                 .setTimestamp()
-                .setFooter('Версия - 0.1 ВЕТА')
+                .setFooter('Версия - 0.2')
 
                 if(!data) return message.channel.send(embed111)
 
                 const pay = Math.floor(Math.random() * (300))+50
 
-                const member = message.mentions.members.first()
+                const payVIP = Math.floor(Math.random() * (100))+50
+
+                const member = message.mentions.members.first() || message.member
 
                 let user = message.author
+
+                const vip = await client.vip(member.id)
 
                 const embed = new MessageEmbed()
         
@@ -36,12 +40,25 @@ module.exports = {
                 .setColor('GREEN')
                 .setDescription(`Вы закончили рабочую смену работая **${data.Job}ом** и заработали - **${pay}$**`)
                 .setTimestamp()
-                .setFooter('Thunder Bot - v 0.1 BETA')
+                .setFooter('Версия - 0.2')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
         
                 client.add(message.member.id, pay)
         
-                message.channel.send(embed)
+                if(vip == 0) return message.channel.send(embed)
+
+                const embed2 = new MessageEmbed()
+        
+                .setTitle('Работа!')
+                .setColor('GREEN')
+                .setDescription(`Вы закончили рабочую смену работая **${data.Job}ом** и заработали - **${pay}$**\nДополнительно от VIP статуса вы заработали - **${payVIP}$**`)
+                .setTimestamp()
+                .setFooter('Версия - 0.2')
+                .setThumbnail(user.displayAvatarURL({dynamic: true}))
+        
+                client.add(message.member.id, pay + payVIP)
+        
+                if(vip == 1) return message.channel.send(embed2)
         })
 
 

@@ -21,7 +21,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Пожалуйста выберите профессию! **!работы**')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         if(!args[0]) return message.channel.send(embedstart)
         const JobToSelect = args[0].toLowerCase()
@@ -34,7 +34,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Профессия которую Вы выбрали не существует!')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         if(!validJob) return message.channel.send()
 
@@ -67,7 +67,7 @@ module.exports = {
             .setColor('GREEN')
             .setDescription(`Вы выбрали профессию - **${JobToSelect}**`)
             .setTimestamp()
-            .setFooter('Версия - 0.1 ВЕТА')
+            .setFooter('Версия - 0.2')
 
             message.channel.send(embed2)
             client.job(message.author.id, JobToSelect)

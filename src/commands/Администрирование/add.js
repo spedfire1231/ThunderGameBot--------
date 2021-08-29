@@ -26,7 +26,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно добавили в кошелёк **${args[0]}$** игроку - ${args[1]}!`)
         .setTimestamp()
-        .setFooter('Версия - 0.1 BETA')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
     }

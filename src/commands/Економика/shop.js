@@ -28,7 +28,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('**Доступное имущество для покупки:**\n **1.** Дом - 75000$\n**2.** Автомобиль - 50000$\n **3.** Квартира - 50000$\nДля покупки введите команду - **!купить**')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(shopembed);
 

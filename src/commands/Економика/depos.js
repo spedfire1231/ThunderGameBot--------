@@ -21,6 +21,7 @@ module.exports = {
         .setColor('GREY')
         .setDescription('Введите значение которое хотите положить в банк!')
         .setTimestamp()
+        .setFooter('Версия - 0.2')
 
         if(!args[0]) return message.channel.send(emptyembed)
 
@@ -30,6 +31,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription('Пожалуйста, введите число, а не символ которое хотите положить на банковский счёт!')
         .setTimestamp()
+        .setFooter('Версия - 0.2')
     
         if(isNaN(args[0])) return message.channel.send(embednum)
     
@@ -41,6 +43,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${bal}$**!`)
         .setTimestamp()
+        .setFooter('Версия - 0.2')
     
         if (parseInt(args[0]) > bal) return message.channel.send(embednocash)
 
@@ -54,6 +57,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно положили на счёт **${args[0]}$**`)
         .setTimestamp()
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
     }

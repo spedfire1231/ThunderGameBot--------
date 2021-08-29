@@ -28,7 +28,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription(`**Доступные работы:**\n **1.** Оператор\n**2.** Грузчик\n**3.** Программист\nДля того чтобы устроиться на работу введите команду **!устроиться**`)
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed);
 

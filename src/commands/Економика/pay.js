@@ -55,6 +55,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${coins}$** !`)
         .setTimestamp()
+        .setFooter('Версия - 0.2')
     
         if (parseInt(args[1]) > coins) return message.channel.send(embednocash)
 
@@ -66,6 +67,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Пожалуйста, введите число, а не символ которое хотите положить на банковский счёт!')
         .setTimestamp()
+        .setFooter('Версия - 0.2')
     
         if(isNaN(args[1])) return message.channel.send(embednum)
 
@@ -75,7 +77,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно перевели на банковский счёт ${sendTo} - **${coinsToDonate}$**!`)
         .setTimestamp()
-        .setFooter('Thunder Bot - v 0.1 BETA')
+        .setFooter('Версия - 0.2')
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
 
         message.channel.send(embed)

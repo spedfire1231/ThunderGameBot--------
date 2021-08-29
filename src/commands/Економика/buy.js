@@ -20,7 +20,7 @@ module.exports = {
         .setTitle('Ошибка!')
         .setColor('RED')
         .setDescription('Пожалуйста выберите предмет! Команда **!магазин**')
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
         .setTimestamp()
 
         if(!args[0]) return message.channel.send(embed1)
@@ -33,7 +33,7 @@ module.exports = {
         .setTitle('Ошибка!')
         .setColor('RED')
         .setDescription('Предмет который Вы хотите купить не сущетствует!')
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
         .setTimestamp()
 
         if(!validItem) return message.channel.send(embed2)
@@ -47,7 +47,7 @@ module.exports = {
         .setTitle('Ошибка!')
         .setColor('RED')
         .setDescription(`У вас есть только **${userBalance}$**, цена данного предмета **${itemPrice}$**`)
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
         .setTimestamp()
 
         if(userBalance < itemPrice) return message.channel.send(embed3)
@@ -83,7 +83,7 @@ module.exports = {
             .setTitle('Успешно!')
             .setColor('GREEN')
             .setDescription(`Вы купили ${itemToBuy}`)
-            .setFooter('Версия - 0.1 ВЕТА')
+            .setFooter('Версия - 0.2')
             .setTimestamp()
 
             message.channel.send(embed4)

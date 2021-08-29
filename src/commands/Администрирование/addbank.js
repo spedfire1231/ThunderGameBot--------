@@ -24,7 +24,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно добавили на банковский счёт **${args[0]}$** игроку - ${user}!`)
         .setTimestamp()
-        .setFooter('Версия - 0.1 BETA')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
 

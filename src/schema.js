@@ -5,6 +5,8 @@ module.exports = mongo.model(
     new mongo.Schema({
         id: String,
         userId: String,
+        User: String,
+        VIP: Number,
         coins: Number,
         bankcoins: Number,
         job: String,

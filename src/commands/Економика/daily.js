@@ -17,7 +17,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription(`Вы получили ежедневный бонус в размере - ${coins}$`)
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
 

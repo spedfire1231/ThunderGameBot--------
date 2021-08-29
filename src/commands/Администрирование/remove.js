@@ -28,7 +28,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно убрали баланс игрока <@${member.id}> на ${args[0]}`)
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
 

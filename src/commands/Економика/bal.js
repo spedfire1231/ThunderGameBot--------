@@ -26,18 +26,32 @@ module.exports = {
         
                 const bank = await client.bank(message.member.id)
 
+                const vip = await client.vip(message.member.id)
+
                 const sum = bal + bank
 
                 const withoutinvent = new MessageEmbed()
 
                 .setTitle('Ваш Баланс')
                 .setColor('RANDOM')
-                .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\nОбщая сумма денежных средств - **${sum}$**`)
+                .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\nОбщая сумма денежных средств - **${sum}$**\nVIP статус - Отсутствует`)
                 .setTimestamp()
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
-                .setFooter('Версия - 0.1 BETA')
+                .setFooter('Версия - 0.2')
 
-                if(!dataInv) return message.channel.send(withoutinvent)
+                if(vip == 0) return message.channel.send(withoutinvent)
+
+                const withoutinvent2 = new MessageEmbed()
+
+                .setTitle('Ваш Баланс')
+                .setColor('RANDOM')
+                .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\nОбщая сумма денежных средств - **${sum}$**\nVIP статус - Имеется`)
+                .setTimestamp()
+                .setThumbnail(user.displayAvatarURL({dynamic: true}))
+                .setFooter('Версия - 0.2')
+
+                if(!vip == 1) return message.channel.send(withoutinvent2)
+
 
                 const mappedData = Object.keys(dataInv.Inventory)
                     .map((key) => {
@@ -49,12 +63,23 @@ module.exports = {
 
             .setTitle('Ваш Баланс')
             .setColor('RANDOM')
-            .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\n Ваше имущество - **${mappedData}**\n Общая сумма денежных средств - **${sum}$**`)
+            .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\n Ваше имущество - **${mappedData}**\n Общая сумма денежных средств - **${sum}$**\nVIP статус - Отсутствует`)
             .setTimestamp()
             .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            .setFooter('Версия - 0.1 BETA')
+            .setFooter('Версия - 0.2')
 
-            message.channel.send(newbal)
+            if(vip == 0) return message.channel.send(newbal)
+
+            const newbal2 = new MessageEmbed()
+
+            .setTitle('Ваш Баланс')
+            .setColor('RANDOM')
+            .setDescription(`В Вашем кошельке - **${bal}$**.\n На Вашем банковском счету - **${bank}$**\n Ваше имущество - **${mappedData}**\n Общая сумма денежных средств - **${sum}$**\nVIP статус - Имеется`)
+            .setTimestamp()
+            .setThumbnail(user.displayAvatarURL({dynamic: true}))
+            .setFooter('Версия - 0.2')
+
+            if(vip == 1) return message.channel.send(newbal2)
         })
     }
 }

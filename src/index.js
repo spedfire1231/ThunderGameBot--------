@@ -36,6 +36,12 @@ client.bank = (userId) => new Promise(async ful =>{
     ful(data.bankcoins);
 })
 
+client.vip = (User) => new Promise(async ful =>{
+    const data = await schema.findOne({User});
+    if(!data) return ful(0);
+    ful(data.VIP);
+})
+
 client.on("guildMemberAdd", member => {
     const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'основной')
     welcomeChannel.send (`Добро покажловать! Для того чтобы посмотреть помощь введите - **!помощь** . Желаем удачи! ${member}`)
@@ -52,6 +58,19 @@ client.add = (id, coins) => {
         }
         data.save();
     }) 
+}
+
+client.addVIP = (User, VIP) => {
+
+    schema.findOne({ User}, async(err, data) => {
+            if(err) throw err;
+            if(data) {
+                data.VIP += VIP;
+                } else {
+                    data = new schema({User, VIP})
+                }
+                data.save()
+        })
 }
 
 client.addbank = (userId, bankcoins) => {
@@ -73,6 +92,18 @@ client.rmv = (id, coins) => {
             data.coins -= coins;
         } else {
             data = new schema({id, coins: -coins})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvVIP = (User, VIP) => {
+    schema.findOne({ User}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.VIP -= VIP;
+        } else {
+            data = new schema({User, VIP: -VIP})
         }
         data.save();
     }) 

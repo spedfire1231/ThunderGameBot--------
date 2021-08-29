@@ -31,6 +31,7 @@ module.exports = {
             .setColor('GREEN')
             .setDescription(`${message.author}, Вы ограбили ${toRob} на сумму - **${robpool}$**!\nСледующее ограбление можно будет провести только через 2 часа.`)
             .setTimestamp()
+            .setFooter('Версия - 0.2')
             
         message.channel.send(embedwin)
 
@@ -43,6 +44,7 @@ module.exports = {
             .setColor('RED')
             .setDescription(`${message.author}, Вы не смогли ограбить данного человека!\nПопробуйте ещё раз через 2 часа, на данный момент команда на перезарядке!`)
             .setTimestamp()
+            .setFooter('Версия - 0.2')
             
         message.channel.send(embedlose)
         };
