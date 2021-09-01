@@ -49,7 +49,7 @@ module.exports = {
 
         client.addbank(member.id, parseInt(args[0]));
 
-        client.rmv(member.id, parseInt(args[0]));
+        client.rmv(member.userId, parseInt(args[0]));
 
         const embed = new MessageEmbed()
         

@@ -17,7 +17,7 @@ module.exports = {
 
         client.rmvbank(member.id, parseInt(args[0]));
 
-        client.add(member.id, parseInt(args[0]));
+        client.add(member.userId, parseInt(args[0]));
 
         const embed = new MessageEmbed()
         

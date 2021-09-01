@@ -15,6 +15,8 @@ module.exports = {
         
         const member = message.mentions.members.first() || message.member
 
+        const vip = await client.vip(member.id)
+
         let user = message.author
 
         const bal = await client.bal(member.userId)
@@ -32,7 +34,7 @@ module.exports = {
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.2')
 
-        message.channel.send(embed)
+        message.channel.send(embed);
 
     }
 }

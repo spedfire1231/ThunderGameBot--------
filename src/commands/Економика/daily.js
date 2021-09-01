@@ -21,6 +21,6 @@ module.exports = {
 
         message.channel.send(embed)
 
-        client.add(message.author.id , coins)
+        client.add(message.author.userId , coins)
     }
 }

@@ -46,7 +46,7 @@ module.exports = {
     .setDescription(`У Вас недостаточно средств! На Вашем балансе - **${bal}$**`)
     .setTimestamp()
 
-    if(args[0] > bal) return message.channel.send(embednocash)+await client.add(message.member.id, +0)
+    if(args[0] > bal) return message.channel.send(embednocash)+await client.add(message.member.userId, +0)
 
     const result = Math.floor(Math.random() * 6) + 1;
 
@@ -71,7 +71,7 @@ module.exports = {
         
     message.channel.send(embedlost)
 
-    await client.rmv(message.member.id, casinopool)
+    await client.rmv(message.member.userId, casinopool)
     } else if (result > 3) {
 
         const embedwin = new MessageEmbed()
@@ -82,7 +82,7 @@ module.exports = {
         
     message.channel.send(embedwin)
 
-    await client.add(message.member.id, casinopool)
+    await client.add(message.member.userId, casinopool)
     };
 
     }

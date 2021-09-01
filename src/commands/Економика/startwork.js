@@ -43,7 +43,7 @@ module.exports = {
                 .setFooter('Версия - 0.2')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
         
-                client.add(message.member.id, pay)
+                client.add(message.member.userId, pay)
         
                 if(vip == 0) return message.channel.send(embed)
 
@@ -56,7 +56,7 @@ module.exports = {
                 .setFooter('Версия - 0.2')
                 .setThumbnail(user.displayAvatarURL({dynamic: true}))
         
-                client.add(message.member.id, pay + payVIP)
+                client.add(message.member.userId, pay + payVIP)
         
                 if(vip == 1) return message.channel.send(embed2)
         })

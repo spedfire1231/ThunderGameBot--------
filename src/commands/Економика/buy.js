@@ -87,7 +87,7 @@ module.exports = {
             .setTimestamp()
 
             message.channel.send(embed4)
-            client.rmv(message.author.id, itemPrice)
+            client.rmv(message.author.userId, itemPrice)
         })
     }
 }

@@ -60,19 +60,6 @@ client.add = (userId, coins) => {
     }) 
 }
 
-client.addVIP = (User, VIP) => {
-
-    schema.findOne({ User}, async(err, data) => {
-            if(err) throw err;
-            if(data) {
-                data.VIP += VIP;
-                } else {
-                    data = new schema({User, VIP})
-                }
-                data.save()
-        })
-}
-
 client.addbank = (userId, bankcoins) => {
     schema.findOne({ userId}, async(err, data) => {
         if(err) throw err;
@@ -83,6 +70,18 @@ client.addbank = (userId, bankcoins) => {
         }
         data.save();
     }) 
+}
+
+client.addVIP = (User, VIP) => {
+    schema.findOne({ User}, async(err, data) => {
+            if(err) throw err;
+            if(data) {
+                data.VIP += VIP;
+                } else {
+                    data = new schema({User, VIP})
+                }
+                data.save()
+        })
 }
 
 client.rmv = (userId, coins) => {
