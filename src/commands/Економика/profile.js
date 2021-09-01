@@ -26,8 +26,7 @@ module.exports = {
 
                 const bal = await client.bal(message.member.userId)
                 const bank = await client.bank(message.member.id)
-                const job = await client.job(message.member.id)
-                const vip = await client.vip(message.member.id)
+                const bit = await client.bitcoins(message.member.id)
 
                 inventory.findOne({
                     Guild: message.guild.id,
@@ -41,13 +40,13 @@ module.exports = {
                         .addField('**Имя:** ', user.username)
                         .addField('**Кошелёк:** ', `${bal}$`)
                         .addField('**Банковский счёт:** ', `${bank}$`)
+                        .addField('**Биткоины:** ', `${bit} BTC`)
                         .addField('**Имущество: **', `Отсутвутет!`)
-                        .addField('**VIP**', `Отсутствует!`)
                         .setTimestamp()
                         .setFooter('Версия - 0.2')
                         .setThumbnail(user.displayAvatarURL({dynamic: true}))
     
-                        if(!dataInv && vip == 0) return message.channel.send(withoutinvent)
+                        if(!dataInv) return message.channel.send(withoutinvent)
     
                         const withoutinvent2 = new MessageEmbed()
     
@@ -56,13 +55,13 @@ module.exports = {
                         .addField('**Имя:** ', user.username)
                         .addField('**Кошелёк:** ', `${bal}$`)
                         .addField('**Банковский счёт:** ', `${bank}$`)
+                        .addField('**Биткоины:** ', `${bit} BTC`)
                         .addField('**Имущество: **', `Отсутвутет!`)
-                        .addField('**VIP**', `Имеется`)
                         .setTimestamp()
                         .setFooter('Версия - 0.2')
                         .setThumbnail(user.displayAvatarURL({dynamic: true}))
     
-                        if(!dataInv && vip == 1) return message.channel.send(withoutinvent2)
+                        if(!dataInv) return message.channel.send(withoutinvent2)
 
                         const mappedData = Object.keys(dataInv.Inventory)
                             .map((key) => {
@@ -78,14 +77,14 @@ module.exports = {
                     .addField('**Имя:** ', user.username)
                     .addField('**Кошелёк:** ', `${bal}$`)
                     .addField('**Банковский счёт:** ', `${bank}$`)
+                    .addField('**Биткоины:** ', `${bit} BTC`)
                     .addField('**Профессия: **', `Отсутствует!`)
                     .addField('**Имущество: **', `Отсутствует!`)
-                    .addField('**VIP**', `Отсутствует`)
                     .setTimestamp()
                     .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
     
-                    if(!dataJob && vip == 0 && !dataInv) return message.channel.send(withoutall)
+                    if(!dataJob && !dataInv) return message.channel.send(withoutall)
 
                   
 
@@ -97,14 +96,14 @@ module.exports = {
                     .addField('**Имя:** ', user.username)
                     .addField('**Кошелёк:** ', `${bal}$`)
                     .addField('**Банковский счёт:** ', `${bank}$`)
+                    .addField('**Биткоины:** ', `${bit} BTC`)
                     .addField('**Профессия: **', `Отсутствует!`)
                     .addField('**Имущество: **', `${mappedData}`)
-                    .addField('**VIP**', `Отсутствует`)
                     .setTimestamp()
                     .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
             
-                    if(!dataJob && !vip == 0) return message.channel.send(withoutjob)
+                    if(!dataJob) return message.channel.send(withoutjob)
 
                     const withoutjob228 = new MessageEmbed()
 
@@ -113,14 +112,14 @@ module.exports = {
                     .addField('**Имя:** ', user.username)
                     .addField('**Кошелёк:** ', `${bal}$`)
                     .addField('**Банковский счёт:** ', `${bank}$`)
+                    .addField('**Биткоины:** ', `${bit} BTC`)
                     .addField('**Профессия: **', `Отсутствует!`)
                     .addField('**Имущество: **', `${mappedData}`)
-                    .addField('**VIP**', `Имеется`)
                     .setTimestamp()
                     .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
             
-                    if(!dataJob && !vip == 1) return message.channel.send(withoutjob228)
+                    if(!dataJob) return message.channel.send(withoutjob228)
 
                     const page1 = new MessageEmbed()
 
@@ -129,30 +128,14 @@ module.exports = {
                     .addField('**Имя:** ', user.username)
                     .addField('**Кошелёк:** ', `${bal}$`)
                     .addField('**Банковский счёт:** ', `${bank}$`)
+                    .addField('**Биткоины:** ', `${bit} BTC`)
                     .addField('**Профессия: **', `${dataJob.Job}`)
                     .addField('**Имущество: **', `${mappedData}`)
-                    .addField('**VIP**', `Имеется`)
                     .setTimestamp()
                     .setFooter('Версия - 0.2')
                     .setThumbnail(user.displayAvatarURL({dynamic: true}))
             
-                    if(vip == 1) return message.channel.send(page1)
-
-                    const page2 = new MessageEmbed()
-
-                    .setTitle('Профиль игрока:')
-                    .setColor('BLUE')
-                    .addField('**Имя:** ', user.username)
-                    .addField('**Кошелёк:** ', `${bal}$`)
-                    .addField('**Банковский счёт:** ', `${bank}$`)
-                    .addField('**Профессия: **', `${dataJob.Job}`)
-                    .addField('**Имущество: **', `${mappedData}`)
-                    .addField('**VIP**', `Отсутствует!`)
-                    .setTimestamp()
-                    .setFooter('Версия - 0.2')
-                    .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            
-                    if(vip == 0) return message.channel.send(page2)
+                    message.channel.send(page1)
                 })
                 
         })

@@ -36,10 +36,16 @@ client.bank = (userId) => new Promise(async ful =>{
     ful(data.bankcoins);
 })
 
-client.vip = (User) => new Promise(async ful =>{
-    const data = await schema.findOne({User});
+client.vip = (userVip) => new Promise(async ful =>{
+    const data = await schema.findOne({ userVip});
     if(!data) return ful(0);
     ful(data.VIP);
+})
+
+client.bitcoins = (userBit) => new Promise(async ful =>{
+    const data = await schema.findOne({ userBit});
+    if(!data) return ful(0);
+    ful(data.bitcoins);
 })
 
 client.on("guildMemberAdd", member => {
@@ -72,17 +78,29 @@ client.addbank = (userId, bankcoins) => {
     }) 
 }
 
-client.addVIP = (User, VIP) => {
-    schema.findOne({ User}, async(err, data) => {
+client.addbitcoins = (userBit, bitcoins) => {
+    schema.findOne({ userBit}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.bitcoins += bitcoins;
+        } else {
+            data = new schema({userBit, bitcoins})
+        }
+        data.save();
+    })
+};
+
+client.addVIP = (userVip, VIP) => {
+    schema.findOne({ userVip}, async(err, data) => {
             if(err) throw err;
             if(data) {
                 data.VIP += VIP;
                 } else {
-                    data = new schema({User, VIP})
+                    data = new schema({userVip, VIP})
                 }
                 data.save()
         })
-}
+};
 
 client.rmv = (userId, coins) => {
     schema.findOne({ userId}, async(err, data) => {
@@ -96,13 +114,13 @@ client.rmv = (userId, coins) => {
     }) 
 }
 
-client.rmvVIP = (User, VIP) => {
-    schema.findOne({ User}, async(err, data) => {
+client.rmvVIP = (userVip, VIP) => {
+    schema.findOne({ userVip}, async(err, data) => {
         if(err) throw err;
         if(data) {
             data.VIP -= VIP;
         } else {
-            data = new schema({User, VIP: -VIP})
+            data = new schema({userVip, VIP: -VIP})
         }
         data.save();
     }) 
@@ -115,6 +133,18 @@ client.rmvbank = (userId, bankcoins) => {
             data.bankcoins -= bankcoins;
         } else {
             data = new schema({userId, bankcoins: -bankcoins})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvbitcoins = (userBit, bitcoins) => {
+    schema.findOne({userBit}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.bitcoins -= bitcoins;
+        } else {
+            data = new schema({userBit, bitcoins: -bitcoins})
         }
         data.save();
     }) 
