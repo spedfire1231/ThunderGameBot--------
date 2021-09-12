@@ -15,12 +15,13 @@ module.exports = {
         
         const member = message.mentions.members.first() || message.member
 
-        let user = message.author
+        let user = message.author.id
 
         const bal = await client.bal(member.userId)
 
         const bank = await client.bank(member.id)
 
+<<<<<<< HEAD
         const name = await client.name(member.id)
 
         const bit = await client.bitcoins(member.id)
@@ -62,16 +63,20 @@ module.exports = {
 
         if(vip == 0) return message.channel.send(embed);
 
+=======
+        const sum = bal + bank
+
+>>>>>>> 2b8e3f798a5b038a5b162c1bb2c6a5be5a0f6433
         const embedvip = new MessageEmbed()
 
         .setTitle(`${name}, Ваш Баланс:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество биткоинов - **${bit} BTC**\nVIP статус - **Активен**\nОбщий размер Ваших средств - **${sum}$**`)
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nОбщий размер Ваших средств - **${sum}$**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.2')
 
-        if(vip == 1) return message.channel.send(embedvip);
+        return message.channel.send(embedvip);
 
     }
 }
