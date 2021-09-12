@@ -15,7 +15,7 @@ module.exports = {
         
         const member = message.mentions.members.first() || message.member
 
-        let user = message.author
+        let user = message.author.id
 
         const bal = await client.bal(member.userId)
 
