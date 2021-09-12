@@ -7,11 +7,13 @@ module.exports = mongo.model(
         userId: String,
         userBit: String,
         userVip: String,
+        userName: String,
         VIP: Number,
         coins: Number,
         bankcoins: Number,
         bitcoins: Number,
         job: String,
+        name: String,
     })
 )
 
