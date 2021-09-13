@@ -21,14 +21,10 @@ module.exports = {
 
         const name = await client.name(member.id)
 
-        const newname = await client.addname(member.id, mynewname)
+        await client.addname(member.id, args[0])
 
         if(!args[0]) return message.channel.send('Укажите Ваш новый ник!')
 
-        if(!name) return message.channel.send('У Вас уже есть ник!')
-
         message.channel.send(`Вы успешно сменили свой ник на - **${mynewname}**`)
-
-
     }
 }
