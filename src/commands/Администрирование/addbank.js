@@ -24,7 +24,7 @@ module.exports = {
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно добавили в банк **${args[0]}$** игроку - ${args[1]}!`)
+        .setDescription(`Вы успешно пополнили банк **${args[0]}$** игроку - ${args[1]}!`)
         .setTimestamp()
         .setFooter('Версия - 0.2')
 
