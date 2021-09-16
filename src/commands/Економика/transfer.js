@@ -21,7 +21,7 @@ module.exports = {
 
         .setTitle('Подсказка!')
         .setColor('BLUE')
-        .setDescription('Выберите человека которому хотите передать деньги!')
+        .setDescription('Выберите человека которому хотите передать деньги')
         .setTimestamp()
         .setFooter('Версия - 0.2')
 
