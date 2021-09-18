@@ -33,12 +33,25 @@ module.exports = {
 
         .setTitle(`Ваш Баланс:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**`)
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**
+        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.3')
 
-        if(vip == 0 && name == undefined) return message.channel.send(embedvipname);
+        if(vip == 0 && name === 'unnamed') return message.channel.send(embedvipname);
+
+        const embedname2 = new MessageEmbed()
+
+        .setTitle(`Ваш Баланс:`)
+        .setColor('BLUE')
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**
+        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+        .setTimestamp()
+        .setThumbnail(user.displayAvatarURL({dynamic: true}))
+        .setFooter('Версия - 0.3')
+
+        if(vip == 1 && name === 'unnamed') return message.channel.send(embedname2);
 
         const embedvip = new MessageEmbed()
 
@@ -50,17 +63,6 @@ module.exports = {
         .setFooter('Версия - 0.3')
 
         if(vip == 0) return message.channel.send(embedvip);
-
-        const embedname = new MessageEmbed()
-
-        .setTitle(`Ваш Баланс:`)
-        .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Активен**\nОбщий размер Ваших средств - **${sum}$**`)
-        .setTimestamp()
-        .setThumbnail(user.displayAvatarURL({dynamic: true}))
-        .setFooter('Версия - 0.3')
-
-        if(vip == 1 & name == undefined) return message.channel.send(embedname);
 
         const embedvip1 = new MessageEmbed()
 

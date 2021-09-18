@@ -17,6 +17,8 @@ module.exports = {
 
         const bal = await client.bal(member.userId)
 
+        const name = await client.name(member.id)
+
         const curs = 45821;
 
         const embed = new MessageEmbed()
@@ -45,11 +47,22 @@ module.exports = {
     
         if(isNaN(args[0])) return message.channel.send(embednum)
 
+        const embedsuccessname = new MessageEmbed()
+
+        .setTitle('Успешно!')
+        .setColor('GREEN')
+        .setDescription(`Вы успешно купили **${amount} BTC** на **${args[0]*45821}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | - **${amount*45821}$**\n BTC - **${bitcoins} BTC** | + **${amount} BTC**\n Желаем Вам приятной игры!
+        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+        .setTimestamp()
+        .setFooter('Версия - 3.0')
+
+        if(name === 'unnamed') return message.channel.send(embedsuccessname)
+
         const embedsuccess = new MessageEmbed()
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно купили **${amount} BTC** на **${args[0]*45821}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | - **${amount*45821}$**\n BTC - **${bitcoins} BTC** | + **${amount} BTC**\n Желаем Вам приятной игры!`)
+        .setDescription(`${name}, Вы успешно купили **${amount} BTC** на **${args[0]*45821}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | - **${amount*45821}$**\n BTC - **${bitcoins} BTC** | + **${amount} BTC**\n Желаем Вам приятной игры!`)
         .setTimestamp()
         .setFooter('Версия - 3.0')
 

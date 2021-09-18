@@ -15,6 +15,8 @@ module.exports = {
 
     run: async (client,message,args) => { 
 
+        const member = message.mentions.members.first() || message.member
+
         const embed1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -41,6 +43,8 @@ module.exports = {
         const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price
 
         const userBalance = await client.bal(message.author.id)
+
+        const name = await client.name(member.id)
 
         const embed3 = new MessageEmbed()
 
@@ -78,11 +82,21 @@ module.exports = {
                 }).save()
             }
 
+            const embedname = new MessageEmbed()
+
+            .setTitle('Успешно!')
+            .setColor('GREEN')
+            .setDescription(`Вы купили ${itemToBuy}\n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+            .setFooter('Версия - 0.2')
+            .setTimestamp()
+
+            if(name === 'unnamed') return message.channel.send(embedname)
+
             const embed4 = new MessageEmbed()
 
             .setTitle('Успешно!')
             .setColor('GREEN')
-            .setDescription(`Вы купили ${itemToBuy}`)
+            .setDescription(`${name}, Вы купили ${itemToBuy}`)
             .setFooter('Версия - 0.2')
             .setTimestamp()
 

@@ -17,6 +17,8 @@ module.exports = {
 
         const bal = await client.bal(member.userId)
 
+        const name = await client.name(member.id)
+
         const curs = 45713;
 
         const embed = new MessageEmbed()
@@ -44,6 +46,17 @@ module.exports = {
         .setFooter('Версия - 0.2')
     
         if(isNaN(args[0])) return message.channel.send(embednum)
+
+        const embedsuccessname = new MessageEmbed()
+
+        .setTitle('Успешно!')
+        .setColor('GREEN')
+        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${args[0]*45713}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*45713}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!
+        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+        .setTimestamp()
+        .setFooter('Версия - 3.0')
+
+        if(name === 'unnamed') return message.channel.send(embedsuccessname)
 
         const embedsuccess = new MessageEmbed()
 

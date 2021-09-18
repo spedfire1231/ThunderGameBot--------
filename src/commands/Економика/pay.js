@@ -11,6 +11,8 @@ module.exports = {
 
     run: async (client,message,args) => { 
 
+        const member = message.mentions.members.first() || message.member
+
         const user = message.mentions.users.first()
 
         const user2 = message.author.id

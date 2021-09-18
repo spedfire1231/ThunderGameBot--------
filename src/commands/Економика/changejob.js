@@ -15,6 +15,8 @@ module.exports = {
 
     run: async (client,message,args) => { 
 
+        const member = message.mentions.members.first() || message.member
+
         const embedstart = new MessageEmbed()
 
         .setTitle('Подсказка!')
@@ -27,6 +29,8 @@ module.exports = {
         const JobToSelect = args[0].toLowerCase()
 
         const validJob = !!jobs.find((val) => val.name === JobToSelect);
+
+        const name = await client.name(member.id)
 
         const embed1 = new MessageEmbed()
 
@@ -61,11 +65,22 @@ module.exports = {
                 }).save()
             }
 
+            const embed2name = new MessageEmbed()
+
+            .setTitle('Успешно!')
+            .setColor('GREEN')
+            .setDescription(`Вы выбрали профессию - **${JobToSelect}**
+            \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+            .setTimestamp()
+            .setFooter('Версия - 0.2')
+
+            if(name === 'unnamed') return message.channel.send(embed2name)
+
             const embed2 = new MessageEmbed()
 
             .setTitle('Успешно!')
             .setColor('GREEN')
-            .setDescription(`Вы выбрали профессию - **${JobToSelect}**`)
+            .setDescription(`${name}, Вы выбрали профессию - **${JobToSelect}**`)
             .setTimestamp()
             .setFooter('Версия - 0.2')
 
