@@ -19,7 +19,7 @@ module.exports = {
 
         client.add(member.userId, coins)
 
-        const embed = new MessageEmbed()
+        const embed4 = new MessageEmbed()
 
         .setTitle('Ежедневный Бонус')
         .setColor('BLUE')
@@ -28,7 +28,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.2')
 
-        if(!vip == 0, name === 'unnamed') return message.channel.send(embed)
+        if(!vip == 0, name === 'unnamed') return message.channel.send(embed4)
 
         const embed = new MessageEmbed()
 
