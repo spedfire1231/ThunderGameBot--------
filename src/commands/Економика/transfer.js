@@ -15,6 +15,10 @@ module.exports = {
 
         const user2 = message.author.userId
 
+        const member = message.mentions.members.first() || message.member
+
+        const name = await client.name(member.id)
+
         let sendTo = args[0]
 
         const embedwho = new MessageEmbed()
@@ -71,6 +75,18 @@ module.exports = {
 
         if(user.id === '871074592234561546') return message.channel.send('Это бот')
 
+
+        const embedname = new MessageEmbed()
+
+        .setTitle('Передача средств успешно произведена!')
+        .setColor('GREEN')
+        .setDescription(`Вы успешно передали ${sendTo} - **${coinsToDonate}$**!
+        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
+        .setTimestamp()
+        .setFooter('Версия - 0.2')
+        .setThumbnail(user.displayAvatarURL({dynamic: true}))
+
+        if(name === 'unnamed') return message.channel.send(embedname)
 
         const embed = new MessageEmbed()
 
