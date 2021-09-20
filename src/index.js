@@ -30,6 +30,12 @@ client.name = (userName) => new Promise(async ful =>{
     ful(data.name);
 })
 
+client.ferm = (userFerms) => new Promise(async ful =>{
+    const data = await schema.findOne({userFerms});
+    if(!data) return ful(0);
+    ful(data.ferms);
+})
+
 client.bal = (userId) => new Promise(async ful =>{
     const data = await schema.findOne({userId});
     if(!data) return ful(0);
@@ -73,6 +79,18 @@ client.add = (userId, coins) => {
             data.coins += coins;
         } else {
             data = new schema({userId, coins})
+        }
+        data.save();
+    }) 
+}
+
+client.addferm = (userFerms, ferms) => {
+    schema.findOne({ userFerms}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ferms += ferms;
+        } else {
+            data = new schema({userFerms, ferms})
         }
         data.save();
     }) 
@@ -145,6 +163,18 @@ client.rmv = (userId, coins) => {
             data.coins -= coins;
         } else {
             data = new schema({userId, coins: -coins})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvferm = (userFerms, ferms) => {
+    schema.findOne({ userFerms}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ferms -= ferms;
+        } else {
+            data = new schema({userFerms, ferms: -ferms})
         }
         data.save();
     }) 
