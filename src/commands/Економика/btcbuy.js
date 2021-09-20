@@ -15,11 +15,23 @@ module.exports = {
 
         const bitcoins = await client.bitcoins(member.id)
 
+        const regist = await client.reg(member.id)
+
         const bal = await client.bal(member.userId)
 
         const name = await client.name(member.id)
 
         const curs = 45821;
+
+        const embedreg1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(regist === 0) return message.channel.send(embedreg1)
 
         const embed = new MessageEmbed()
 

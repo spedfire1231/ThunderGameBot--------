@@ -22,11 +22,23 @@ module.exports = {
 
                 const member = message.mentions.members.first() || message.member;
 
+                const regist = await client.reg(member.id)
+
                 let user = message.author
 
                 const bal = await client.bal(message.member.userId)
                 const bank = await client.bank(message.member.id)
                 const bit = await client.bitcoins(message.member.id)
+
+                const embedreg1 = new MessageEmbed()
+
+                .setTitle('Ошибка!')
+                .setColor('RED')
+                .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+                .setTimestamp()
+                .setFooter('Версия - 0.4')
+        
+                if(regist === 0) return message.channel.send(embedreg1)
 
                 inventory.findOne({
                     Guild: message.guild.id,

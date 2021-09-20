@@ -15,6 +15,8 @@ module.exports = {
 
         const bal = await client.bal(message.member.id)
 
+        const regist = await client.reg(member.id)
+
         const name = await client.name(member.id)
 
         const result = Math.floor(Math.random() * 6) + 1;
@@ -22,6 +24,16 @@ module.exports = {
         const coins = Math.floor(Math.random() * 500) + 50
 
         const robpool = parseInt(coins)
+
+        const embedreg1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(regist === 0) return message.channel.send(embedreg1)
 
         if(member.id === '871074592234561546') return message.channel.send('Это бот')
 

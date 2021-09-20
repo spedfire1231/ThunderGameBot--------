@@ -17,6 +17,18 @@ module.exports = {
 
         const member = message.mentions.members.first() || message.member
 
+        const regist = await client.reg(member.id)
+
+        const embedreg1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(regist === 0) return message.channel.send(embedreg1)
+
         const embedstart = new MessageEmbed()
 
         .setTitle('Подсказка!')

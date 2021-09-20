@@ -19,6 +19,18 @@ module.exports = {
 
         const name = await client.name(member.id)
 
+        const regist = await client.regist(member.id)
+
+        const embedreg1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(regist === 0) return message.channel.send(embedreg1)
+
         const embedname = new MessageEmbed()
 
         .setTitle('Курс Биткоина(BTC)!')

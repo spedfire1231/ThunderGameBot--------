@@ -14,6 +14,20 @@ module.exports = {
             User: message.author.id,},
             async(err, data) => {
 
+                const member = message.mentions.members.first() || message.member
+
+                const regist = await client.reg(member.id)
+
+                const embedreg1 = new MessageEmbed()
+
+                .setTitle('Ошибка!')
+                .setColor('RED')
+                .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+                .setTimestamp()
+                .setFooter('Версия - 0.4')
+        
+                if(regist === 0) return message.channel.send(embedreg1)
+
                 const embed111 = new MessageEmbed()
 
                 .setTitle('Ошибка!')
@@ -29,8 +43,6 @@ module.exports = {
                 const payVIP = Math.floor(Math.random() * (100))+50
 
                 const name = await client.name(member.id)
-
-                const member = message.mentions.members.first() || message.member
 
                 let user = message.author
 
