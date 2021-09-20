@@ -21,6 +21,8 @@ module.exports = {
 
         const bank = await client.bank(member.id)
 
+        const regist = await client.reg(member.id)
+
         const bit = await client.bitcoins(member.id)
 
         const name = await client.name(member.id)
@@ -28,6 +30,16 @@ module.exports = {
         const vip = await client.vip(member.id)
 
         const sum = bal + bank
+
+        const embedreg1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Вы не зарегестрированы!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(regist === 0) return message.channel.send(embedreg1)
 
         const embedvipname = new MessageEmbed()
 

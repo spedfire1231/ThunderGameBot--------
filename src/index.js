@@ -36,6 +36,12 @@ client.bal = (userId) => new Promise(async ful =>{
     ful(data.coins);
 })
 
+client.reg = (userReg) => new Promise(async ful =>{
+    const data = await schema.findOne({userReg});
+    if(!data) return ful(0);
+    ful(data.register);
+})
+
 client.bank = (userId) => new Promise(async ful =>{
     const data = await schema.findOne({userId});
     if(!data) return ful(0);
@@ -67,6 +73,18 @@ client.add = (userId, coins) => {
             data.coins += coins;
         } else {
             data = new schema({userId, coins})
+        }
+        data.save();
+    }) 
+}
+
+client.addregister = (userReg, register) => {
+    schema.findOne({ userReg}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.register = register;
+        } else {
+            data = new schema({userReg, register})
         }
         data.save();
     }) 
@@ -127,6 +145,18 @@ client.rmv = (userId, coins) => {
             data.coins -= coins;
         } else {
             data = new schema({userId, coins: -coins})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvregister = (userReg, register) => {
+    schema.findOne({ userReg}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.register -= register;
+        } else {
+            data = new schema({userReg, register: -register})
         }
         data.save();
     }) 
