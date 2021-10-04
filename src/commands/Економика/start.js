@@ -50,7 +50,17 @@ module.exports = {
 
         await client.addname(member.id, selectname)
 
-        await client.add(member.userId, 1500)
+        await client.add(member.id, 1500)
+
+        await client.addbank(member.id, 0)
+
+        await client.addbitcoins(member.id, 0)
+
+        await client.addVIP(member.id, 0)
+
+        await client.addadmin(member.id, 0)
+
+        await client.addferm(member.id, 0)
 
     }
 }

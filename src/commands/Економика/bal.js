@@ -17,7 +17,7 @@ module.exports = {
 
         let user = message.author
 
-        const bal = await client.bal(member.userId)
+        const bal = await client.bal(member.id)
 
         const bank = await client.bank(member.id)
 

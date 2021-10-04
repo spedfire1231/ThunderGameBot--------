@@ -42,6 +42,6 @@ module.exports = {
 
         client.addferm(member.id, parseInt(amount))
 
-        client.rmv(member.userId, parseInt(args[0]*100000))
+        client.rmv(member.id, parseInt(args[0]*100000))
     }
 }

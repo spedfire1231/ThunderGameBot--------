@@ -17,7 +17,7 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
-        const bal = await client.bal(member.userId)
+        const bal = await client.bal(member.id)
 
         const name = await client.name(member.id)
 
@@ -45,7 +45,7 @@ module.exports = {
 
         client.rmvbitcoins(member.id, amount)
 
-        const newbal = await client.add(member.userId, amount*45713)
+        const newbal = await client.add(member.id, amount*45713)
 
         if(args[0].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
 
@@ -79,8 +79,6 @@ module.exports = {
         .setFooter('Версия - 3.0')
 
         message.channel.send(embedsuccess)
-
-        setInterval
 
     }
 }

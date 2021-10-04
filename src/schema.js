@@ -8,6 +8,11 @@ module.exports = mongo.model(
         userBit: String,
         userVip: String,
         userName: String,
+        userJp: String,
+        userJob: String,
+        jobprogress: Number,
+        userAdmin: String,
+        userAdminpass: String,
         userFerms: String,
         userReg: String,
         VIP: Number,
@@ -18,6 +23,9 @@ module.exports = mongo.model(
         name: String,
         register: Number,
         ferms: Number,
+        ADMIN: Number,
+        ADMINPASS: Number,
+        alogin: Number,
     })
 )
 

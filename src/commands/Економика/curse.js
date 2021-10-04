@@ -13,13 +13,13 @@ module.exports = {
 
         const bitcoins = await client.bitcoins(member.id)
 
-        const bal = await client.bal(member.userId)
+        const bal = await client.bal(member.id)
 
         const bank = await client.bank(member.id)
 
         const name = await client.name(member.id)
 
-        const regist = await client.regist(member.id)
+        const regist = await client.reg(member.id)
 
         const embedreg1 = new MessageEmbed()
 

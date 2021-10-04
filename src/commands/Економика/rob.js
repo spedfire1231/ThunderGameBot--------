@@ -61,7 +61,7 @@ module.exports = {
         message.channel.send(embedwin)
 
             client.add(user2, robpool)
-            client.rmv(member.userId, robpool)
+            client.rmv(member.id, robpool)
         } else if (result < 3) {
 
             const embedlose2 = new MessageEmbed()

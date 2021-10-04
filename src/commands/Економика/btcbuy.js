@@ -45,7 +45,7 @@ module.exports = {
 
         client.addbitcoins(member.id, amount)
 
-        const newbal = await client.rmv(member.userId, amount*45821)
+        const newbal = await client.rmv(member.id, amount*45821)
 
         if(args[0].includes('-')) return message.channel.send('Вы не можете ввести BTC в минус')
 

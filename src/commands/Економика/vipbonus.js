@@ -29,7 +29,7 @@ module.exports = {
 
         const coins = Math.floor(Math.random() * 15000) + 5000
 
-        client.add(member.userId, coins)
+        client.add(member.id, coins)
 
         const embed4 = new MessageEmbed()
 

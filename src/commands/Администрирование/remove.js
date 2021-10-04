@@ -20,13 +20,13 @@ module.exports = {
         if(!args[1]) return message.channel.send('Укажите игрока которому хотите убрать средства!')
 
 
-        client.rmv(member.userId, parseInt(args[0]));
+        client.rmv(member.id, parseInt(args[0]));
 
         const embed = new MessageEmbed()
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно убрали баланс игрока ${args[0]} на <@${member.id}>`)
+        .setDescription(`Вы успешно убрали **${args[0]}$** игроку <@${member.id}>`)
         .setTimestamp()
         .setFooter('Версия - 0.2')
 

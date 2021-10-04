@@ -6,7 +6,7 @@ const client = new Client({
 const schema = require('./schema')
 const mongo = require('mongoose')
 
-mongo.connect(process.env.MONGODB_URI || "mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/test", {
+mongo.connect(process.env.MONGODB_URI || "mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/bot", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
@@ -36,8 +36,8 @@ client.ferm = (userFerms) => new Promise(async ful =>{
     ful(data.ferms);
 })
 
-client.bal = (userId) => new Promise(async ful =>{
-    const data = await schema.findOne({userId});
+client.bal = (id) => new Promise(async ful =>{
+    const data = await schema.findOne({id});
     if(!data) return ful(0);
     ful(data.coins);
 })
@@ -52,6 +52,24 @@ client.bank = (userId) => new Promise(async ful =>{
     const data = await schema.findOne({userId});
     if(!data) return ful(0);
     ful(data.bankcoins);
+})
+
+client.admin = (userAdmin) => new Promise(async ful =>{
+    const data = await schema.findOne({ userAdmin});
+    if(!data) return ful(0);
+    ful(data.ADMIN);
+})
+
+client.alogin = (userAdmin) => new Promise(async ful =>{
+    const data = await schema.findOne({ userAdmin});
+    if(!data) return ful(0);
+    ful(data.alogin);
+})
+
+client.admpass = (userAdmin) => new Promise(async ful =>{
+    const data = await schema.findOne({userAdmin});
+    if(!data) return ful(0);
+    ful(data.ADMINPASS);
 })
 
 client.vip = (userVip) => new Promise(async ful =>{
@@ -72,13 +90,13 @@ client.on("guildMemberAdd", member => {
 })
 
 
-client.add = (userId, coins) => {
-    schema.findOne({ userId}, async(err, data) => {
+client.add = (id, coins) => {
+    schema.findOne({id}, async(err, data) => {
         if(err) throw err;
         if(data) {
             data.coins += coins;
         } else {
-            data = new schema({userId, coins})
+            data = new schema({id, coins})
         }
         data.save();
     }) 
@@ -108,6 +126,42 @@ client.addregister = (userReg, register) => {
     }) 
 }
 
+client.job = (userJob) => new Promise(async ful =>{
+    const data = await schema.findOne({userJob});
+    if(!data) return ful(0);
+    ful(data.job);
+})
+
+client.jobprogress = (userJp) => new Promise(async ful =>{ 
+    const data = await schema.findOne({userJp}); 
+    if(!data) return ful(0); 
+    ful(data.jobprogress); 
+}) 
+ 
+client.addjp = (userJp, jobprogress) => { 
+    schema.findOne({userJp}, async(err, data) => { 
+        if(err) throw err; 
+        if(data) { 
+            data.jobprogress += jobprogress; 
+        } else { 
+            data = new schema({userJp, jobprogress}) 
+        } 
+        data.save(); 
+    })  
+} 
+ 
+client.addjob = (userJob, job) => { 
+    schema.findOne({userJob}, async(err, data) => { 
+        if(err) throw err; 
+        if(data) { 
+            data.job = job; 
+        } else { 
+            data = new schema({userJob, job}) 
+        } 
+        data.save(); 
+    })  
+}
+
 client.addname = (userName, name) => {
     schema.findOne({ userName}, async(err, data) => {
         if(err) throw err;
@@ -127,6 +181,42 @@ client.addbank = (userId, bankcoins) => {
             data.bankcoins += bankcoins;
         } else {
             data = new schema({userId, bankcoins})
+        }
+        data.save();
+    }) 
+}
+
+client.addadmin = (userAdmin, ADMIN) => {
+    schema.findOne({ userAdmin}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ADMIN = ADMIN;
+        } else {
+            data = new schema({userAdmin, ADMIN})
+        }
+        data.save();
+    }) 
+}
+
+client.addlogin = (userAdmin, alogin) => {
+    schema.findOne({ userAdmin}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.alogin = alogin;
+        } else {
+            data = new schema({userAdmin, alogin})
+        }
+        data.save();
+    }) 
+}
+
+client.addadminpass = (userAdmin, ADMINPASS) => {
+    schema.findOne({ userAdmin}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ADMINPASS = ADMINPASS;
+        } else {
+            data = new schema({userAdmin, ADMINPASS})
         }
         data.save();
     }) 
@@ -156,13 +246,13 @@ client.addVIP = (userVip, VIP) => {
         })
 };
 
-client.rmv = (userId, coins) => {
-    schema.findOne({ userId}, async(err, data) => {
+client.rmv = (id, coins) => {
+    schema.findOne({id}, async(err, data) => {
         if(err) throw err;
         if(data) {
             data.coins -= coins;
         } else {
-            data = new schema({userId, coins: -coins})
+            data = new schema({id, coins: -coins})
         }
         data.save();
     }) 
@@ -175,6 +265,18 @@ client.rmvferm = (userFerms, ferms) => {
             data.ferms -= ferms;
         } else {
             data = new schema({userFerms, ferms: -ferms})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvadmin = (userAdmin, ADMIN) => {
+    schema.findOne({ userAdmin}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ADMIN - ADMIN;
+        } else {
+            data = new schema({userAdmin, ADMIN: -ADMIN})
         }
         data.save();
     }) 
@@ -239,12 +341,6 @@ client.rmvbitcoins = (userBit, bitcoins) => {
         data.save();
     }) 
 }
-
-client.job = (id) => new Promise(async ful =>{
-    const data = await schema.findOne({id});
-    if(!data) return ful(0);
-    ful(data.job);
-})
 
 client.login(config.token)
 

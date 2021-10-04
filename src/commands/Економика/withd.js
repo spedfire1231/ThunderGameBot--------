@@ -30,7 +30,7 @@ module.exports = {
 
         const name = await client.name(member.id)
 
-        client.add(member.userId, parseInt(args[0]));
+        client.add(member.id, parseInt(args[0]));
 
         const embed2 = new MessageEmbed()
         

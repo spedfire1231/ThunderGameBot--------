@@ -12,22 +12,21 @@ module.exports = {
     run: async (client,message,args) => { 
 
         const member = message.mentions.members.first() || message.member;
-
         const user = message.author
-
         if(message.member.id != '286853335854612480') return message.channel.send("У вас недостаточно прав чтобы использовать данную команду!");
 
-
-        client.add(member.userId, parseInt(args[0]));
+        let amount = args[0]
 
         const embed = new MessageEmbed()
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно пополнили кошелёк **${args[0]}$** игроку - ${args[1]}!`)
+        .setDescription(`Вы успешно пополнили кошелёк **${amount}$**`)
         .setTimestamp()
         .setFooter('Версия - 0.2')
 
         message.channel.send(embed)
+
+        client.add(member.id, parseInt(amount));
     }
 }

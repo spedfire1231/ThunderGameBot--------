@@ -13,7 +13,7 @@ module.exports = {
 
         const user = message.mentions.users.first()
 
-        const user2 = message.author.userId
+        const user2 = message.author.id
 
         const member = message.mentions.members.first() || message.member
 
@@ -71,7 +71,7 @@ module.exports = {
     
         if (parseInt(args[1]) > coins) return message.channel.send(embednocash)
 
-        const newbalus = await client.add(user.userId, convert)
+        const newbalus = await client.add(user.id, convert)
 
         const embednum = new MessageEmbed()
 
