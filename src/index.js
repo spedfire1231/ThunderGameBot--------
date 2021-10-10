@@ -36,6 +36,19 @@ client.ferm = (userFerms) => new Promise(async ful =>{
     ful(data.ferms);
 })
 
+client.ban = (userBanned) => new Promise(async ful =>{
+    const data = await schema.findOne({userBanned});
+    if(!data) return ful(0);
+    ful(data.ban);
+})
+
+client.reason = (BanReason) => new Promise(async ful =>{
+    const data = await schema.findOne({BanReason});
+    if(!data) return ful(0);
+    ful(data.reason);
+})
+
+
 client.bal = (id) => new Promise(async ful =>{
     const data = await schema.findOne({id});
     if(!data) return ful(0);
@@ -58,18 +71,6 @@ client.admin = (userAdmin) => new Promise(async ful =>{
     const data = await schema.findOne({ userAdmin});
     if(!data) return ful(0);
     ful(data.ADMIN);
-})
-
-client.alogin = (userAdmin) => new Promise(async ful =>{
-    const data = await schema.findOne({ userAdmin});
-    if(!data) return ful(0);
-    ful(data.alogin);
-})
-
-client.admpass = (userAdmin) => new Promise(async ful =>{
-    const data = await schema.findOne({userAdmin});
-    if(!data) return ful(0);
-    ful(data.ADMINPASS);
 })
 
 client.vip = (userVip) => new Promise(async ful =>{
@@ -109,6 +110,31 @@ client.addferm = (userFerms, ferms) => {
             data.ferms += ferms;
         } else {
             data = new schema({userFerms, ferms})
+        }
+        data.save();
+    }) 
+}
+
+
+client.addban = (userBanned, ban) => {
+    schema.findOne({userBanned}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ban = ban;
+        } else {
+            data = new schema({userBanned, ban})
+        }
+        data.save();
+    }) 
+}
+
+client.addbanreason = (BanReason, reason) => {
+    schema.findOne({BanReason}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.reason = reason;
+        } else {
+            data = new schema({BanReason, reason})
         }
         data.save();
     }) 
@@ -198,30 +224,6 @@ client.addadmin = (userAdmin, ADMIN) => {
     }) 
 }
 
-client.addlogin = (userAdmin, alogin) => {
-    schema.findOne({ userAdmin}, async(err, data) => {
-        if(err) throw err;
-        if(data) {
-            data.alogin = alogin;
-        } else {
-            data = new schema({userAdmin, alogin})
-        }
-        data.save();
-    }) 
-}
-
-client.addadminpass = (userAdmin, ADMINPASS) => {
-    schema.findOne({ userAdmin}, async(err, data) => {
-        if(err) throw err;
-        if(data) {
-            data.ADMINPASS = ADMINPASS;
-        } else {
-            data = new schema({userAdmin, ADMINPASS})
-        }
-        data.save();
-    }) 
-}
-
 client.addbitcoins = (userBit, bitcoins) => {
     schema.findOne({ userBit}, async(err, data) => {
         if(err) throw err;
@@ -265,6 +267,18 @@ client.rmvferm = (userFerms, ferms) => {
             data.ferms -= ferms;
         } else {
             data = new schema({userFerms, ferms: -ferms})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvban = (userBanned, ban) => {
+    schema.findOne({ userBanned}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.ban = ban;
+        } else {
+            data = new schema({userBanned, ban: -ban})
         }
         data.save();
     }) 

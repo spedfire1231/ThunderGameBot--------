@@ -11,21 +11,17 @@ module.exports = {
 
         const member = message.mentions.members.first() || message.member
 
+        if(message.member.id != '286853335854612480') return message.channel.send("У вас недостаточно прав чтобы использовать данную команду!");
+
         let admin = args[0]
 
         const adminka = await client.admin(member.id)
-
-        const admpassset = Math.floor(Math.random() * 15000) + 543251435234
-
-        //if(adminka === 0) return message.channel.send('Вы не администратор!')
-
-        //if(adminka === 1) return message.channel.send('Вы не разработчик!')
 
         const embed = new MessageEmbed()
 
         .setTitle('Подсказка!')
         .setColor('BLUE')
-        .setDescription('Пожалуйста укажите ник кому хотите выдать администрирование!')
+        .setDescription('Пожалуйста укажите ник кому хотите выдать админку!')
         .setTimestamp('')
         .setFooter('Версия - 0.7')
 
@@ -35,17 +31,13 @@ module.exports = {
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно выдали ${args[0]} пост администратора его пароль от администрирования ${admpassset}.`)
+        .setDescription(`Вы успешно выдали ${args[0]} пост администратора.`)
         .setTimestamp('')
         .setFooter('Версия - 0.7')
 
         message.channel.send(embedmakeadmin)
 
         client.addadmin(member.id, 1)
-
-        client.addadminpass(member.id, admpassset)
-
-        message.channel.send(`${args[0]} Вам была выдана админка, Ваш пароль ${admpassset}`)
 
     }
 }

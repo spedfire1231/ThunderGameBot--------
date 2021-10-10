@@ -1,9 +1,7 @@
 const{ Client, Message, MessageEmbed } = require('discord.js')
 
-const inventory = require('../../models/inventory')
-
 module.exports = {
-    name: 'баланс',
+    name: 'профиль',
 
     /**
     *@param {Client} client
@@ -20,6 +18,10 @@ module.exports = {
         const bal = await client.bal(member.id)
 
         const bank = await client.bank(member.id)
+
+        const admin = await client.admin(member.id)
+
+        const jobprog = await client.jobprogress(member.id)
 
         const regist = await client.reg(member.id)
 
@@ -43,9 +45,9 @@ module.exports = {
 
         const embedvipname = new MessageEmbed()
 
-        .setTitle(`Ваш Баланс:`)
+        .setTitle(`Профиль игрока - **${name}**:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nРабочий прогресс: ${jobprog}\nОбщий размер Ваших средств - **${sum}$**
         \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
@@ -55,9 +57,9 @@ module.exports = {
 
         const embedname2 = new MessageEmbed()
 
-        .setTitle(`Ваш Баланс:`)
+        .setTitle(`Профиль игрока - **${name}**:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**Рабочий прогресс: **${jobprog} ед.**\nОбщий размер Ваших средств - **${sum}$**
         \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
@@ -67,9 +69,9 @@ module.exports = {
 
         const embedvip = new MessageEmbed()
 
-        .setTitle(`${name}, Ваш Баланс:`)
+        .setTitle(`Профиль игрока - **${name}**:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nОбщий размер Ваших средств - **${sum}$**`)
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Неактивен**\nРабочий прогресс: **${jobprog} ед.**\nОбщий размер Ваших средств - **${sum}$**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.3')
@@ -78,9 +80,9 @@ module.exports = {
 
         const embedvip1 = new MessageEmbed()
 
-        .setTitle(`${name}, Ваш Баланс:`)
+        .setTitle(`Профиль игрока - **${name}**:`)
         .setColor('BLUE')
-        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Активен**\nОбщий размер Ваших средств - **${sum}$**`)
+        .setDescription(`В Вашем кошельке - **${bal}$**\nНа Вашем банковском счету - **${bank}$**\nКоличество BTC - **${bit}**\nVIP Статус - **Активен**\nРабочий прогресс: **${jobprog} ед.**\nОбщий размер Ваших средств - **${sum}$**`)
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.3')

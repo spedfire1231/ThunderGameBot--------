@@ -1,9 +1,5 @@
 const{ Client, Message, MessageEmbed } = require('discord.js')
 
-const jobs = require('../../jobs')
-
-const Money = require('../../schema')
-
 module.exports = {
     name: 'addname',
 
