@@ -6,7 +6,7 @@ const client = new Client({
 const schema = require('./schema')
 const mongo = require('mongoose')
 
-mongo.connect(process.env.MONGODB_URI || "mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/bot", {
+mongo.connect(process.env.MONGODB_URI || "mongodb+srv://thundergamebot:Sglorov1231@thundergbcluster.v6771.mongodb.net/thunder", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
@@ -36,16 +36,28 @@ client.ferm = (userFerms) => new Promise(async ful =>{
     ful(data.ferms);
 })
 
-client.ban = (userBanned) => new Promise(async ful =>{
-    const data = await schema.findOne({userBanned});
+client.bankrob = (userBankRob) => new Promise(async ful =>{
+    const data = await schema.findOne({userBankRob});
     if(!data) return ful(0);
-    ful(data.ban);
+    ful(data.bankrob);
 })
 
-client.reason = (BanReason) => new Promise(async ful =>{
-    const data = await schema.findOne({BanReason});
+client.robprog = (userRobProg) => new Promise(async ful =>{
+    const data = await schema.findOne({userRobProg});
     if(!data) return ful(0);
-    ful(data.reason);
+    ful(data.robprog);
+})
+
+client.banacc = (userBannedacc) => new Promise(async ful =>{
+    const data = await schema.findOne({userBannedacc});
+    if(!data) return ful(0);
+    ful(data.banacc);
+})
+
+client.reason = (userBanReason) => new Promise(async ful =>{
+    const data = await schema.findOne({userBanReason});
+    if(!data) return ful('Отсутствует!');
+    ful(data.reasontoban);
 })
 
 
@@ -115,26 +127,50 @@ client.addferm = (userFerms, ferms) => {
     }) 
 }
 
-
-client.addban = (userBanned, ban) => {
-    schema.findOne({userBanned}, async(err, data) => {
+client.addbankrob = (userBankRob, bankrob) => {
+    schema.findOne({userBankRob}, async(err, data) => {
         if(err) throw err;
         if(data) {
-            data.ban = ban;
+            data.bankrob = bankrob;
         } else {
-            data = new schema({userBanned, ban})
+            data = new schema({userBankRob, bankrob})
         }
         data.save();
     }) 
 }
 
-client.addbanreason = (BanReason, reason) => {
-    schema.findOne({BanReason}, async(err, data) => {
+client.addrobprog = (userRobProg, robprog) => {
+    schema.findOne({userRobProg}, async(err, data) => {
         if(err) throw err;
         if(data) {
-            data.reason = reason;
+            data.robprog += robprog;
         } else {
-            data = new schema({BanReason, reason})
+            data = new schema({userRobProg, robprog})
+        }
+        data.save();
+    }) 
+}
+
+
+client.addbanacc = (userBannedacc, banacc) => {
+    schema.findOne({userBannedacc}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.banacc = banacc;
+        } else {
+            data = new schema({userBannedacc, banacc})
+        }
+        data.save();
+    }) 
+}
+
+client.addbanreasonacc = (userBanReason, reasontoban) => {
+    schema.findOne({userBanReason}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.reasontoban = reasontoban;
+        } else {
+            data = new schema({userBanReason, reasontoban})
         }
         data.save();
     }) 
@@ -255,6 +291,18 @@ client.rmv = (id, coins) => {
             data.coins -= coins;
         } else {
             data = new schema({id, coins: -coins})
+        }
+        data.save();
+    }) 
+}
+
+client.rmvbanacc = (userBannedacc, banacc) => {
+    schema.findOne({userBannedacc}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.banacc = banacc;
+        } else {
+            data = new schema({userBannedacc, banacc})
         }
         data.save();
     }) 

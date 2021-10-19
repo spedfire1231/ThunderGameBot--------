@@ -1,7 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'ban',
+    name: 'unban',
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -19,7 +19,7 @@ module.exports = {
 
         .setTitle('Подсказка!')
         .setColor('BLUE')
-        .setDescription('Укажите игрока которому хотите выдать блокировку')
+        .setDescription('Укажите игрока которому хотите убрать блокировку')
         .setFooter('Версия - 0.9')
         .setTimestamp('')
 
@@ -29,15 +29,15 @@ module.exports = {
 
         .setTitle('Успешно!')
         .setColor('BLUE')
-        .setDescription(`${name}, Вы успешно выдали блокировку игроку - **${player}**.`)
+        .setDescription(`${name}, Вы успешно убрали блокировку игроку - **${player}**`)
         .setFooter('Версия - 0.9')
         .setTimestamp('')
 
         message.channel.send(embedbanned)
 
-        client.addbanacc(member.id, 1)
+        client.addbanacc(member.id, 0)
 
-        message.channel.send('Блокировка аккаунта успешно выдана!')
+        message.channel.send('Блокировка аккаунта успешно убрана!')
 
 
 

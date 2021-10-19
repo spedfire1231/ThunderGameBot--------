@@ -17,6 +17,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const banned = await client.banacc(member.id)
+
         const name = await client.name(member.id)
 
         const result = Math.floor(Math.random() * 6) + 1;
@@ -34,6 +36,16 @@ module.exports = {
         .setFooter('Версия - 0.4')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedban1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(banned === 1) return message.channel.send(embedban1)
 
         if(member.id === '871074592234561546') return message.channel.send('Это бот')
 

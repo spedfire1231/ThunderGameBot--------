@@ -12,6 +12,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const banned = await client.banacc(member.id)
+
         let amount = args[0]
 
         const ferma = await client.ferm(member.id)
@@ -25,6 +27,16 @@ module.exports = {
         .setFooter('Версия - 0.4')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedban1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(banned === 1) return message.channel.send(embedban1)
 
         if(!args[0]) return message.channel.send('Укажите количество ферм для покупки')
 

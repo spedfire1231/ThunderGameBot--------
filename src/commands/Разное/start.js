@@ -13,6 +13,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const banned = await client.banacc(member.id)
+
         let selectname = args[0]
 
         const embedargs0 = new MessageEmbed()
@@ -23,6 +25,16 @@ module.exports = {
         .setTimestamp()
 
         if(!args[0]) return message.channel.send(embedargs0)
+
+        const embedban1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
+        .setTimestamp()
+        .setFooter('Версия - 0.4')
+
+        if(banned === 1) return message.channel.send(embedban1)
 
         const embedreg1 = new MessageEmbed()
 

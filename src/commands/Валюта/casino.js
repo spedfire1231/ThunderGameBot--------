@@ -14,6 +14,30 @@ module.exports = {
 
     const member = message.mentions.members.first() || message.author
 
+    const regist = await client.reg(member.id)
+
+    const banned = await client.banacc(member.id)
+
+    const embedreg1 = new MessageEmbed()
+
+    .setTitle('Ошибка!')
+    .setColor('RED')
+    .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
+    .setTimestamp()
+    .setFooter('Версия - 0.4')
+
+    if(regist === 0) return message.channel.send(embedreg1)
+
+    const embedban1 = new MessageEmbed()
+
+    .setTitle('Ошибка!')
+    .setColor('RED')
+    .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
+    .setTimestamp()
+    .setFooter('Версия - 0.4')
+
+    if(banned === 1) return message.channel.send(embedban1)
+
     let amount = args[0]
 
     if(args[1]) return message.channel.send('Нельзя пушить другого человека!')
@@ -31,6 +55,7 @@ module.exports = {
     const bal = await client.bal(message.member.id)
 
     const surprise = await client.rmv(message.member.id, casinopool)
+
 
     const winner = await client.add(message.member.id, casinopool)
 
