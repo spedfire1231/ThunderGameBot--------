@@ -1,8 +1,7 @@
 const{ Client, Message, MessageEmbed } = require('discord.js')
 
 module.exports = {
-    name: 'casino',
-    aliases: ['казино'],
+    name: 'казино',
 
     /**
     *@param {Client} client
@@ -77,42 +76,42 @@ module.exports = {
 
     if (parseInt(casinopool) > bal) return message.channel.send(embednocash)
 
-    const result = Math.floor(Math.random() * 6) + 1;
+    const result = Math.floor(Math.random() * 2)+1
 
-    if (result == 3) {
-        const embedthree = new MessageEmbed()
-
-        .setTitle('🎲 THUNDER CASINO 🎲')
-        .setColor('GREY')
-        .setDescription(`${message.author}, Выпало число 3. Ваши деньги остаются на месте`)
-        .setTimestamp()
-
-        message.channel.send(embedthree)
-    }
-
-    if (result < 3) {
-        
-        const embedlost = new MessageEmbed()
-        .setTitle('🎲 THUNDER CASINO 🎲')
-        .setColor('RED')
-        .setDescription(`${message.author}, Вы проиграли! C Вашего счёта списано - **${casinopool}$**. Выпало число ${result}`)
-        .setTimestamp()
-        
-    message.channel.send(embedlost)
-
-    await client.rmv(message.member.id, casinopool)
-    } else if (result > 3) {
+    if (result == 0) {
 
         const embedwin = new MessageEmbed()
         .setTitle('🎲 THUNDER CASINO 🎲')
         .setColor('GREEN')
-        .setDescription(`${message.author}, Вы выиграли! На Ваш счёт зачислено - **${casinopool}$**. Выпало число ${result}`)
+        .setDescription(`${message.author}, Вы играли но игровые кости упали на пол. Повторите попытку ещё раз.`)
         .setTimestamp()
         
     message.channel.send(embedwin)
 
-    await client.add(message.member.id, casinopool)
-    };
+    await client.add(message.member.id, 0)}
+
+    if (result == 1) {
+        
+        const embedlost = new MessageEmbed()
+        .setTitle('🎲 THUNDER CASINO 🎲')
+        .setColor('RED')
+        .setDescription(`${message.author}, Вы проиграли! C Вашего счёта списано - **${casinopool}$**.`)
+        .setTimestamp()
+        
+    message.channel.send(embedlost)
+
+    await client.rmv(message.member.id, casinopool)};
+    if (result == 2) {
+
+        const embedwin = new MessageEmbed()
+        .setTitle('🎲 THUNDER CASINO 🎲')
+        .setColor('GREEN')
+        .setDescription(`${message.author}, Вы выиграли! На Ваш счёт зачислено - **${casinopool}$**.`)
+        .setTimestamp()
+        
+    message.channel.send(embedwin)
+
+    await client.add(message.member.id, casinopool)}
 
     }
 }

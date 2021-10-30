@@ -24,6 +24,10 @@ client.categories = fs.readdirSync(path.resolve('src/commands'));
     require(path.resolve(`src/handlers/${handler}`))(client);
 }); 
 
+client.on("ready", function() {
+    client.user.setActivity(`ThunderBot || v 1.0`, {type: 'PLAYING'});
+});
+
 client.name = (userName) => new Promise(async ful =>{
     const data = await schema.findOne({userName});
     if(!data) return ful('unnamed');
@@ -53,6 +57,26 @@ client.banacc = (userBannedacc) => new Promise(async ful =>{
     if(!data) return ful(0);
     ful(data.banacc);
 })
+
+// Ставка в казино
+
+client.stavka = (userStavka) => new Promise(async ful =>{
+    const data = await schema.findOne({userStavka});
+    if(!data) return ful(0);
+    ful(data.stavka);
+})
+
+client.addstavka = (userStavka, stavka) => {
+    schema.findOne({userStavka}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.stavka = stavka;
+        } else {
+            data = new schema({userStavka, stavka})
+        }
+        data.save();
+    }) 
+}
 
 client.reason = (userBanReason) => new Promise(async ful =>{
     const data = await schema.findOne({userBanReason});
