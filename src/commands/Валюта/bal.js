@@ -25,9 +25,13 @@ module.exports = {
 
         const stavka = await client.stavka(member.id)
 
+        const msg = await message.channel.send(`📦 Загружаем данные профиля...`)
+
         const regist = await client.reg(member.id)
 
         const bit = await client.bitcoins(member.id)
+
+        const energy = await client.energy(member.id)
 
         const name = await client.name(member.id)
 
@@ -69,14 +73,15 @@ module.exports = {
             .addField(`**Биткоины:**`, `${bit} BTC`, {inline: true})
             .addField(`**VIP Стаутс:**`, `Активен`, {inline: true})
             .addField(`**Рабочий прогресс:**`, `${jobprog} ед.`, {inline: true}) // the verification level
-            .addField(`**Количество фишек:**`, `${stavka} фишек`, {inline: true}) // how many times it got boosted
+            .addField(`**Количество фишек:**`, `${stavka} фишек`, {inline: true})
+            .addField(`**Количество энергии:**`, `${energy} ед.`, {inline: true})
             .addField(`**Общий размер денежных средств:**`, `${bal+bank}$`, {inline: true}) // when did the server got created 
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.3')
         .setImage('https://i.imgur.com/aKO1CPQ.jpg')
 
-        if(vip == 0) return message.channel.send(embedvip0);
+        if(vip == 0) return message.channel.send(embedvip0)+msg.delete();
 
         const embedvipname = new MessageEmbed()
 
@@ -88,14 +93,15 @@ module.exports = {
             .addField(`**Биткоины:**`, `${bit} BTC`, {inline: true})
             .addField(`**VIP Стаутс:**`, `Активен`, {inline: true})
             .addField(`**Рабочий прогресс:**`, `${jobprog} ед.`, {inline: true}) // the verification level
-            .addField(`**Количество фишек:**`, `${stavka} фишек`, {inline: true}) // how many times it got boosted
+            .addField(`**Количество фишек:**`, `${stavka} фишек`, {inline: true})
+            .addField(`**Количество энергии:**`, `${energy} ед.`, {inline: true}) // how many times it got boosted
             .addField(`**Общий размер денежных средств:**`, `${bal+bank}$`, {inline: true}) // when did the server got created 
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
         .setFooter('Версия - 0.3')
         .setImage('https://i.imgur.com/aKO1CPQ.jpg')
 
-        if(vip == 1) return message.channel.send(embedvipname);
+        if(vip == 1) return message.channel.send(embedvipname)+msg.delete();
 
     }
 }

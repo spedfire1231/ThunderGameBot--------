@@ -19,11 +19,11 @@ module.exports = {
 
         const banned = await client.banacc(member.id)
 
+        const curse = await client.curs(member.id, curse)
+
         const bal = await client.bal(member.id)
 
         const name = await client.name(member.id)
-
-        const curs = 45713;
 
         const embedreg1 = new MessageEmbed()
 
@@ -53,13 +53,19 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 3.0')
 
-        if(!amount) return message.channel.send(embed)
-
-        client.rmvbitcoins(member.id, amount)
-
-        const newbal = await client.add(member.id, amount*45713)
+        if(!amount || amount == 0) return message.channel.send(embed)
 
         if(args[0].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
+
+        const embednocash = new MessageEmbed()
+    
+        .setTitle('Подсказка! THUNDER CENTRAL BANK')
+        .setColor('RANDOM')
+        .setDescription(`У Вас недостаточно BTC для продажи!`)
+        .setTimestamp()
+        .setFooter('Версия - 0.2')
+    
+        if (bitcoins < amount) return message.channel.send(embednocash)
 
         const embednum = new MessageEmbed()
 
@@ -75,7 +81,7 @@ module.exports = {
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${args[0]*45713}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*45713}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!
+        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${amount*curse-amount*1000}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*45713}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!
         \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
         .setTimestamp()
         .setFooter('Версия - 3.0')
@@ -86,11 +92,13 @@ module.exports = {
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${args[0]*45713}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*45713}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!`)
+        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${amount*curs-amount*1000}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*curse-amount*1000}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!`)
         .setTimestamp()
         .setFooter('Версия - 3.0')
 
         message.channel.send(embedsuccess)
+
+        client.rmvbitcoins(member.id, amount)+client.add(member.id, curse-1000)
 
     }
 }

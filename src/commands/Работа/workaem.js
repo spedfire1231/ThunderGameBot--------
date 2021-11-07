@@ -15,6 +15,8 @@ module.exports = {
 
         const banned = await client.banacc(member.id)
 
+        const energy = await client.energy(member.id)
+
         const embedreg1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -43,6 +45,17 @@ module.exports = {
 
         const jobprog = await client.jobprogress(member.id)
 
+        const embed = new MessageEmbed()
+        
+        .setTitle('Подсказка')
+        .setColor('BLUE')
+        .setDescription(`У Вас недостаточно энергии чтобы начать работу.\n
+        Пропишите команду !получить-энергию для того чтобы узнать доступна ли на данный момент энергия!`)
+        .setTimestamp()
+        .setFooter('Версия - ')
+        
+        if(energy == 0) return message.channel.send()
+
         const embednojob = new MessageEmbed()
 
         .setTitle('Подсказка')
@@ -62,7 +75,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 1) return message.channel.send(embedpay1)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 1) return message.channel.send(embedpay1)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
         const embedpay2 = new MessageEmbed()
 
@@ -73,7 +86,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 2) return message.channel.send(embedpay2)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 2) return message.channel.send(embedpay2)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
         const embedpay3 = new MessageEmbed()
 
@@ -84,7 +97,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 3) return message.channel.send(embedpay3)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 3) return message.channel.send(embedpay3)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
         const embedpay4 = new MessageEmbed()
 
@@ -95,7 +108,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 4) return message.channel.send(embedpay4)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 4) return message.channel.send(embedpay4)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
         const embedpay5 = new MessageEmbed()
 
@@ -106,7 +119,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 5) return message.channel.send(embedpay5)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 5) return message.channel.send(embedpay5)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
         const embedpay6 = new MessageEmbed()
 
@@ -117,7 +130,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.9')
 
-        if(job <= 6) return message.channel.send(embedpay6)+client.add(member.id, pay)+client.addjp(member.id, 1)
+        if(job <= 6) return message.channel.send(embedpay6)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
 
 

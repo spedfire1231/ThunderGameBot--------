@@ -38,6 +38,16 @@ module.exports = {
 
         if(banned === 1) return message.channel.send(embedban1)
 
+        const embednocash = new MessageEmbed()
+    
+        .setTitle('Подсказка! THUNDER CENTRAL BANK')
+        .setColor('RANDOM')
+        .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${bal}$**!`)
+        .setTimestamp()
+        .setFooter('Версия - 0.2')
+    
+        if (parseInt(args[0]) > bal) return message.channel.send(embednocash)
+
         client.rmvbank(member.id, parseInt(args[0]));
 
         const name = await client.name(member.id)

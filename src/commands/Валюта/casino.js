@@ -15,6 +15,8 @@ module.exports = {
 
     const regist = await client.reg(member.id)
 
+    const stavka = await client.stavka(member.id)
+
     const banned = await client.banacc(member.id)
 
     const embedreg1 = new MessageEmbed()
@@ -39,8 +41,6 @@ module.exports = {
 
     let amount = args[0]
 
-    if(args[1]) return message.channel.send('Нельзя пушить другого человека!')
-
     const casinopool = parseInt(amount)
 
     const emamount = new MessageEmbed()
@@ -49,14 +49,13 @@ module.exports = {
     .setColor('GREY')
     .setDescription(`Пожалуйста, введите Вашу ставку!`)
 
-    if(!casinopool) return message.channel.send(emamount)
+    if(!amount) return message.channel.send(emamount)
 
-    const bal = await client.bal(message.member.id)
+    const bal = await client.bal(member.id)
 
-    const surprise = await client.rmv(message.member.id, casinopool)
+    const surprise = await client.addstavka(member.id, -casinopool)
 
-
-    const winner = await client.add(message.member.id, casinopool)
+    const winner = await client.addstavka(member.id, casinopool)
 
     const minusembed = new MessageEmbed()
 
@@ -71,10 +70,10 @@ module.exports = {
 
     .setTitle('Подсказка! 🎲 THUNDER CASINO 🎲')
     .setColor('GREY')
-    .setDescription(`У Вас недостаточно средств! На Вашем балансе - **${bal}$**`)
+    .setDescription(`У Вас недостаточно фишек! На Вашем балансе - **${stavka}$**`)
     .setTimestamp()
 
-    if (parseInt(casinopool) > bal) return message.channel.send(embednocash)
+    if (parseInt(casinopool) > stavka) return message.channel.send(embednocash)
 
     const result = Math.floor(Math.random() * 2)+1
 
@@ -100,7 +99,7 @@ module.exports = {
         
     message.channel.send(embedlost)
 
-    await client.rmv(message.member.id, casinopool)};
+    client.addstavka(message.member.id, -casinopool)};
     if (result == 2) {
 
         const embedwin = new MessageEmbed()
@@ -111,7 +110,7 @@ module.exports = {
         
     message.channel.send(embedwin)
 
-    await client.add(message.member.id, casinopool)}
+    client.addstavka(message.member.id, casinopool)}
 
     }
 }

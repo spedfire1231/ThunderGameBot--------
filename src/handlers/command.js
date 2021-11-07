@@ -1,8 +1,8 @@
 const { readdirSync } = require("fs");
 const ascii = require("ascii-table");
 const path = require('path')
-let table = new ascii("Commands");
-table.setHeading("Command", " Load status");
+let table = new ascii("Команды");
+table.setHeading("Команда", " Статус загрузки");
 module.exports = (client) => {
   readdirSync("./src/commands/").forEach((dir) => {
     const commands = readdirSync(`./src/commands/${dir}/`).filter((file) =>
@@ -12,11 +12,11 @@ module.exports = (client) => {
       let pull = require(path.resolve(`src/commands/${dir}/${file}`));
       if (pull.name) {
         client.commands.set(pull.name, pull);
-        table.addRow(file, "✅");
+        table.addRow(file, "Статус: Загружено! ✅ ");
       } else {
         table.addRow(
           file,
-          "❌ -> Missing a help.name, or help.name is not a string."
+          "❌ -> Потеряно help.name, или help.name не является строкой."
         );
         continue;
       }

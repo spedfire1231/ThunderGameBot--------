@@ -41,6 +41,16 @@ module.exports = {
 
         if(banned === 1) return message.channel.send(embedban1)
 
+        const embednocash = new MessageEmbed()
+    
+        .setTitle('Подсказка! THUNDER CENTRAL BANK')
+        .setColor('RANDOM')
+        .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${bal}$**!`)
+        .setTimestamp()
+        .setFooter('Версия - 0.2')
+    
+        if (parseInt(args[1]) > bal) return message.channel.send(embednocash)
+
         const name = await client.name(member.id)
 
         let sendTo = args[0]
@@ -73,7 +83,7 @@ module.exports = {
 
         if(args[1].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
 
-        const embednocash = new MessageEmbed()
+        const embednocashh = new MessageEmbed()
     
         .setTitle('Подсказка! THUNDER CENTRAL BANK')
         .setColor('RANDOM')
@@ -81,7 +91,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Версия - 0.2')
     
-        if (parseInt(args[1]) > coins) return message.channel.send(embednocash)
+        if (parseInt(args[1]) > coins) return message.channel.send(embednocashh)
 
         const newbalus = await client.add(user.id, convert)
 

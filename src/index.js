@@ -25,7 +25,7 @@ client.categories = fs.readdirSync(path.resolve('src/commands'));
 }); 
 
 client.on("ready", function() {
-    client.user.setActivity(`ThunderBot || v 1.0`, {type: 'PLAYING'});
+    client.user.setActivity(`ThunderBot || v 1.1`, {type: 'PLAYING'});
 });
 
 client.name = (userName) => new Promise(async ful =>{
@@ -51,6 +51,26 @@ client.robprog = (userRobProg) => new Promise(async ful =>{
     if(!data) return ful(0);
     ful(data.robprog);
 })
+
+// Энергия
+
+client.energy = (userEnergy) => new Promise(async ful =>{
+    const data = await schema.findOne({userEnergy});
+    if(!data) return ful(0);
+    ful(data.energy);
+})
+
+client.addenergy = (userEnergy, energy) => {
+    schema.findOne({userEnergy}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.energy += energy;
+        } else {
+            data = new schema({userEnergy, energy})
+        }
+        data.save();
+    }) 
+}
 
 client.banacc = (userBannedacc) => new Promise(async ful =>{
     const data = await schema.findOne({userBannedacc});
@@ -114,6 +134,24 @@ client.vip = (userVip) => new Promise(async ful =>{
     if(!data) return ful(0);
     ful(data.VIP);
 })
+
+client.curse = (userCurse) => new Promise(async ful =>{
+    const data = await schema.findOne({userCurse});
+    if(!data) return ful(0);
+    ful(data.curse);
+})
+
+client.addcurse = (userCurse, curse) => {
+    schema.findOne({userCurse}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.curse = curse;
+        } else {
+            data = new schema({userCurse, curse})
+        }
+        data.save();
+    }) 
+}
 
 client.bitcoins = (userBit) => new Promise(async ful =>{
     const data = await schema.findOne({ userBit});

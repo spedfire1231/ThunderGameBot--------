@@ -19,6 +19,8 @@ module.exports = {
 
         const name = await client.name(member.id)
 
+        const curs = await client.curse()
+
         const regist = await client.reg(member.id)
 
         const banned = await client.banacc(member.id)
@@ -58,7 +60,7 @@ module.exports = {
 
         .setTitle('Курс Биткоина(BTC)!')
         .setColor('BLUE')
-        .setDescription(`${name}, На данный момент курс обмена BTC - **45713$**\nКурс покупки BTC - **45821$**\n\n Ваш баланc кошелька - **${bal}$**\n Ваш баланс банковской карты - **${bank}$**\n Количество BTC - **${bitcoins} BTC**`)
+        .setDescription(`${name}, На данный момент курс обмена BTC - **${curs-1000}$**\nКурс покупки BTC - **${curs}$**\n\n Ваш баланc кошелька - **${bal}$**\n Ваш баланс банковской карты - **${bank}$**\n Количество BTC - **${bitcoins} BTC**`)
         .setTimestamp()
         .setFooter('Версия - 3.0')
 

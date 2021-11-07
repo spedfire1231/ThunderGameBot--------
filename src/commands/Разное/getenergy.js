@@ -1,8 +1,9 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'вип-бонус',
-    cooldown: 1000 * 60 * 60 * 24, 
+    name: 'получить-энергию',
+    cooldown: 1000 * 60 * 60 * 6, // 6 часов
+
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -14,6 +15,10 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const vip = await client.vip(member.id)
+
+        const name = await client.name(member.id)
+
         const banned = await client.banacc(member.id)
 
         const embedreg1 = new MessageEmbed()
@@ -22,7 +27,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -32,38 +37,32 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        
 
         if(banned === 1) return message.channel.send(embedban1)
 
-        const vip = await client.vip(member.id)
-
-        const name = await client.name(member.id)
-
-        const coins = Math.floor(Math.random() * 15000) + 5000
-
-        client.add(member.id, coins)
-
-        const embed4 = new MessageEmbed()
-
-        .setTitle('Ежедневный Бонус')
-        .setColor('BLUE')
-        .setDescription(`Вы получили ежедневный VIP бонус - **${coins}$**
-        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
-        .setTimestamp()
-        .setFooter('Версия - 0.2')
-
-        if(!vip == 0, name === 'unnamed') return message.channel.send(embed4)
-
         const embed = new MessageEmbed()
-
-        .setTitle('Ежедневный Бонус')
+        
+        .setTitle('Получена Энергия!')
         .setColor('BLUE')
-        .setDescription(`Вы получили ежедневный VIP бонус - **${coins}$**`)
+        .setDescription(`${name}, Вы получили 20 энергии, теперь Вы можете начать или продолжить работать либо снова ограбить банк.\n
+        Следующий раз Вы сможете получить энергию через 6 часов`)
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter(``)
+        
+        if(vip == 0) return message.channel.send(embed)+client.addenergy(member.id, 20)
 
-        if(!vip == 0) return message.channel.send(embed)
+        const embed1 = new MessageEmbed()
+        
+        .setTitle('[VIP] Получена Энергия!')
+        .setColor('BLUE')
+        .setDescription(`${name}, Вы получили **40 энергии** так как у Вас привелегия - **VIP**, теперь Вы можете начать или продолжить работать либо снова ограбить банк.\n
+        Следующий раз Вы сможете получить энергию через 6 часов`)
+        .setTimestamp()
+        .setFooter(``)
+        
+        if(vip == 1) return message.channel.send(embed1)+client.addenergy(member.id, 40)
+        
 
     }
 }
