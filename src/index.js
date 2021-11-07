@@ -25,7 +25,7 @@ client.categories = fs.readdirSync(path.resolve('src/commands'));
 }); 
 
 client.on("ready", function() {
-    client.user.setActivity(`ThunderBot || v 1.1`, {type: 'PLAYING'});
+    client.user.setActivity(`ThunderBot | v 1.1`, {type: 'PLAYING'});
 });
 
 client.name = (userName) => new Promise(async ful =>{
