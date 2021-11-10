@@ -21,7 +21,7 @@ module.exports = {
         .setColor('RED')
         .setDescription(`Пожалуйста, отметьте человека на которого хотите отправить жалобу!`)
         .setTimestamp()
-        .setFooter('Версия - 1.1')
+        .setFooter('')
         
         if(!args[0]) return message.channel.send(embed1)
     
@@ -33,7 +33,7 @@ module.exports = {
         .setColor('RED')
         .setDescription(`Пожалуйста, введите причину жалобы!`)
         .setTimestamp()
-        .setFooter('Версия - 1.1')
+        .setFooter('')
 
         if(!reason) return message.channel.send(embed2)
     

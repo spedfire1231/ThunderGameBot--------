@@ -29,7 +29,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -39,7 +39,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -49,7 +49,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Выберите человека которому хотите перевести деньги на счёт')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('')
 
         if(!args[0]) return message.channel.send(embed2)
 
@@ -63,7 +63,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Введите число которое хотите перевести человеку на счёт')
         .setTimestamp()
-        .setFooter('Версия - 0.1 ВЕТА')
+        .setFooter('')
 
         if(!args[1]) return message.channel.send(embed3)
 
@@ -81,7 +81,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${coins}$** !`)
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
     
         if (parseInt(args[1]) > coins) return message.channel.send(embednocash)
 
@@ -93,7 +93,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('Пожалуйста, введите число, а не символ которое хотите положить на банковский счёт!')
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
     
         if(isNaN(args[1])) return message.channel.send(embednum)
 
@@ -103,7 +103,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`Вы успешно перевели на банковский счёт ${sendTo} - **${coinsToDonate}$**!`)
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
 
         message.channel.send(embed)

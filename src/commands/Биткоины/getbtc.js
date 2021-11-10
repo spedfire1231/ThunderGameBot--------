@@ -24,7 +24,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -34,7 +34,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -46,7 +46,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('У Вас нет биткоин ферм чтобы собрать прибыль!')
         .setTimestamp()
-        .setFooter('Версия - 0.5')
+        .setFooter('')
 
         if(ferma === 0) return message.channel.send(embedfail)
 
@@ -57,7 +57,7 @@ module.exports = {
         .setDescription(`${name}, Вы успешно собрали ${ferma} BTC с Ваших биткоин ферм.\n
         Следующий сбор биткоинов может быть осуществлён через 3 дня, фермы работают в активном режиме!`)
         .setTimestamp()
-        .setFooter('Версия - 0.5')
+        .setFooter('')
 
         message.channel.send(embedsuccess)
 

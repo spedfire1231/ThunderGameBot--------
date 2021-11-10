@@ -19,7 +19,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -31,7 +31,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -52,7 +52,7 @@ module.exports = {
         .setDescription(`Вы перешли на третью фазу ограбления банка!\n
         Ваша задача на этой фазе: Уход от полиции и спрятаться в складе где будут спрятаны деньги.`)
         .setTimestamp()
-        .setFooter('Версия - 1.0')
+        .setFooter('')
         
         if(bankrob == 2 && robprog == 0) return message.channel.send(embed)+client.addbankrob(member.id, 3)
 

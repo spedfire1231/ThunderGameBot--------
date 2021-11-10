@@ -29,7 +29,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -39,7 +39,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -49,7 +49,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription(`У Вас недостаточно средств! Ваш баланс на момент ввода команды **${bal}$**!`)
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
     
         if (bal < curs) return message.channel.send(embednocash)
 
@@ -60,7 +60,7 @@ module.exports = {
         .setDescription(`${name}, Вы успешно купили **1 BTC** за **${curs}$**\n
         Желаем Вам приятной игры!`)
         .setTimestamp()
-        .setFooter('Версия - 3.0')
+        .setFooter('')
 
         message.channel.send(embedsuccess)
 

@@ -33,7 +33,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -43,7 +43,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -59,7 +59,7 @@ module.exports = {
             .setDescription(`${message.author}, Вы ограбили ${toRob} на сумму - **${robpool}$**!\nСледующее ограбление можно будет провести только через 2 часа.
             \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
             .setTimestamp()
-            .setFooter('Версия - 0.2')
+            .setFooter('')
             
         if(name === 'unnamed') return message.channel.send(embedwin0)
 
@@ -68,7 +68,7 @@ module.exports = {
             .setColor('GREEN')
             .setDescription(`{name}, ${message.author}, Вы ограбили ${toRob} на сумму - **${robpool}$**!\nСледующее ограбление можно будет провести только через 2 часа.`)
             .setTimestamp()
-            .setFooter('Версия - 0.2')
+            .setFooter('')
             
         message.channel.send(embedwin)
 
@@ -82,7 +82,7 @@ module.exports = {
             .setDescription(`${message.author}, Вы не смогли ограбить данного человека!\nПопробуйте ещё раз через 2 часа, на данный момент команда на перезарядке!
             \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
             .setTimestamp()
-            .setFooter('Версия - 0.2')
+            .setFooter('')
             
             if(name === 'unnamed') return message.channel.send(embedlose2)
 
@@ -91,7 +91,7 @@ module.exports = {
             .setColor('RED')
             .setDescription(`${name} ${message.author}, Вы не смогли ограбить данного человека!\nПопробуйте ещё раз через 2 часа, на данный момент команда на перезарядке!`)
             .setTimestamp()
-            .setFooter('Версия - 0.2')
+            .setFooter('')
             
         message.channel.send(embedlose)
         };

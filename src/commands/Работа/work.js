@@ -23,7 +23,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -33,7 +33,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -51,7 +51,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Грузчика`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 1) return message.channel.send(job1)+await client.addjob(member.id, 1)
 
@@ -61,7 +61,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Оператора`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 2 && jobprog >= 50) return message.channel.send(job2)+await client.addjob(member.id, 2)
 
@@ -73,7 +73,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Программиста`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 3 && jobprog >= 200) return message.channel.send(job3)+await client.addjob(member.id, 3)
 
@@ -85,7 +85,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Начальника Магазина`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 4 && jobprog >= 350) return message.channel.send(job4)+await client.addjob(member.id, 4)
 
@@ -97,7 +97,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Управляющего Рестораном`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 5 && jobprog >= 750) return message.channel.send(job5)+await client.addjob(member.id, 5)
 
@@ -109,7 +109,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Директор АЗК`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 6 && jobprog >= 1000) return message.channel.send(job6)+await client.addjob(member.id, 6)
 
@@ -121,7 +121,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Генеральный Директор Банка`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 7 && jobprog >= 1100) return message.channel.send(job7)+await client.addjob(member.id, 7)
 
@@ -133,7 +133,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Советник Мэра`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 8 && jobprog >= 1250) return message.channel.send(job8)+await client.addjob(member.id, 8)
 
@@ -145,7 +145,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Заместитель Мэра`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 9 && jobprog >= 1500) return message.channel.send(job9)+await client.addjob(member.id, 9)
 
@@ -157,7 +157,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы успешно выбрали профессию Мэр города`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(args[0] == 10 && jobprog >= 2000) return message.channel.send(job10)+await client.addjob(member.id, 10)
 

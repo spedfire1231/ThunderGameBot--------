@@ -19,7 +19,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -31,7 +31,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -52,7 +52,7 @@ module.exports = {
         .setDescription(`Вы уже можете перейти на третью фазу ограбления!\n
         Команда для перехода на третью фазу - **!ограб-начать3**`)
         .setTimestamp()
-        .setFooter('Версия - 1.0')
+        .setFooter('')
         
 
         if(robprog == 0) return message.channel.send(embedtwostep)
@@ -70,7 +70,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedone)+client.addrobprog(member.id, -1)
         }
@@ -85,7 +85,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedtwo)+client.addrobprog(member.id, -1)
         }
@@ -100,7 +100,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedthree)+client.addrobprog(member.id, -1)
         }
@@ -115,7 +115,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedfour)+client.addrobprog(member.id, -1)
         }
@@ -130,7 +130,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedfive)+client.addrobprog(member.id, -1)
         }
@@ -145,7 +145,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedsix)+client.addrobprog(member.id, -1)
         }
@@ -160,7 +160,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedseven)+client.addrobprog(member.id, -1)
         }
@@ -175,7 +175,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedeight)+client.addrobprog(member.id, -1)
         }
@@ -190,7 +190,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embednine)+client.addrobprog(member.id, -1)
         }
@@ -205,7 +205,7 @@ module.exports = {
             После 10-и действий ограбления Вы сможете перейти на третью фазу\n
             Команда для перехода на третью фазу - **!ограб-начать3**!`)
             .setTimestamp()
-            .setFooter('Версия - 1.0')
+            .setFooter('')
     
             message.channel.send(embedten)+client.addrobprog(member.id, -1)
         }

@@ -32,7 +32,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -42,7 +42,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы уже зарегестрированы!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 1) return message.channel.send(embedreg1)
 
@@ -54,7 +54,7 @@ module.exports = {
         Вам был выдан стартовый бонус в размере **1500$**\nВам были разблокированы команды бота, проверьте Ваш баланс командой - **!профиль** чтобы удостовериться в этом.\n
         Приятной игры на нашем проекте!`)
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         message.channel.send(startreg)
 

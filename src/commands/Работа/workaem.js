@@ -52,7 +52,7 @@ module.exports = {
         .setDescription(`У Вас недостаточно энергии чтобы начать работу.\n
         Пропишите команду !получить-энергию для того чтобы узнать доступна ли на данный момент энергия!`)
         .setTimestamp()
-        .setFooter('Версия - ')
+        .setFooter('')
         
         if(energy == 0) return message.channel.send()
 
@@ -62,7 +62,7 @@ module.exports = {
         .setColor('BLUE')
         .setDescription('У Вас нет работы!')
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(!job) return message.channel.send(embednojob)
 
@@ -73,7 +73,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Грузчиком и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 1) return message.channel.send(embedpay1)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
@@ -84,7 +84,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Оператором и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 2) return message.channel.send(embedpay2)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
@@ -95,7 +95,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Программистом и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 3) return message.channel.send(embedpay3)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
@@ -106,7 +106,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Начальником Магазина и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 4) return message.channel.send(embedpay4)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
@@ -117,7 +117,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Управляющим Рестораном и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 5) return message.channel.send(embedpay5)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 
@@ -128,7 +128,7 @@ module.exports = {
         .setDescription(`${name}, Вы закончили рабочую смену работая Директором АЗК и заработали ${pay}$.\n
         Следующую рабочую смену Вы сможете начать через 30 секунд!`)
         .setTimestamp()
-        .setFooter('Версия - 0.9')
+        .setFooter('')
 
         if(job <= 6) return message.channel.send(embedpay6)+client.add(member.id, pay)+client.addjp(member.id, 1)+client.addenergy(member.id, -1)
 

@@ -19,7 +19,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -31,7 +31,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -54,7 +54,7 @@ module.exports = {
         Ну и третья фаза это покинуть здание банка и отправиться в свой склад чтобы спрятать украденные деньги.\n
         Но учтите тот момент, что при ограблении банка Ваш рабочий прогресс будет снижен на 50, не зависимо от того сколько его у Вас. При нулевом значении рабочего прогресса у Вас будет по логике **-50 JP**\nПриятного ограбления :)`)
         .setTimestamp()
-        .setFooter('Версия - 1.0')
+        .setFooter('')
         
         if(bankrob == 0) return message.channel.send(embed)+client.addbankrob(member.id, 1)
 

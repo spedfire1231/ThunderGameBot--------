@@ -25,7 +25,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Вы не зарегестрированы!\nДля регистрации нового аккаунта введите - **!старт [Ваш игровой ник]**\nПосле регистрации Вам будут доступны команды бота!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
 
@@ -35,7 +35,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
 
         if(banned === 1) return message.channel.send(embedban1)
 
@@ -49,7 +49,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription('Пожалуйста, введите число, а не символ которое хотите преобрести!')
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
     
         if(isNaN(args[0])) return message.channel.send(embednum)
     
@@ -61,7 +61,7 @@ module.exports = {
         .setColor('RANDOM')
         .setDescription(`У Вас недостаточно средств! Заработайте более денег либо положите сумму до **${bal}$**!`)
         .setTimestamp()
-        .setFooter('Версия - 0.2')
+        .setFooter('')
     
         if (parseInt(args[0]) > bal) return message.channel.send(embednocash)
 
@@ -71,7 +71,7 @@ module.exports = {
         .setColor('GREEN')
         .setDescription(`${name}, Вы преобрели ${setstavka} фишек для игры в казино.`)
         .setTimestamp()
-        .setFooter('Версия - 1.1')
+        .setFooter('')
         
         message.channel.send(embed)
 

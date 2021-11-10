@@ -58,7 +58,7 @@ module.exports = {
         .setColor('RED')
         .setDescription('Ваш игровой аккаунт заблокирование администратором бота! Если Вы уверенны, что это ошибочный бан обратитесь к разработчику!')
         .setTimestamp()
-        .setFooter('Версия - 0.4')
+        .setFooter('')
         .setImage('https://i.imgur.com/aKO1CPQ.jpg')
 
         if(banned === 1) return message.channel.send(embedban1)
@@ -78,7 +78,7 @@ module.exports = {
             .addField(`**Общий размер денежных средств:**`, `${bal+bank}$`, {inline: true}) // when did the server got created 
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
-        .setFooter('Версия - 0.3')
+        .setFooter('')
         .setImage('https://i.imgur.com/aKO1CPQ.jpg')
 
         if(vip == 0) return message.channel.send(embedvip0)+msg.delete();
@@ -98,7 +98,7 @@ module.exports = {
             .addField(`**Общий размер денежных средств:**`, `${bal+bank}$`, {inline: true}) // when did the server got created 
         .setTimestamp()
         .setThumbnail(user.displayAvatarURL({dynamic: true}))
-        .setFooter('Версия - 0.3')
+        .setFooter('')
         .setImage('https://i.imgur.com/aKO1CPQ.jpg')
 
         if(vip == 1) return message.channel.send(embedvipname)+msg.delete();
