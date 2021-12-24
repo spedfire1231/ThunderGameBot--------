@@ -13,6 +13,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const health = await client.health(member.id)
+
         const embedreg1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -22,6 +24,16 @@ module.exports = {
         .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 80) return message.channel.send(embedhealth1)
 
         const banned = await client.banacc(member.id)
 
@@ -50,7 +62,9 @@ module.exports = {
         .setTitle('Ограбление банка')
         .setColor('GREEN')
         .setDescription(`Вы перешли на третью фазу ограбления банка!\n
-        Ваша задача на этой фазе: Уход от полиции и спрятаться в складе где будут спрятаны деньги.`)
+        Ваша задача на этой фазе: Уход от полиции и спрятаться в складе где будут спрятаны деньги.\n
+        
+        Для продолжения ограбления введите - **!ограб-старт3**`)
         .setTimestamp()
         .setFooter('')
         

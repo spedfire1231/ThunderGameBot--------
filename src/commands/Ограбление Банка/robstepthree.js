@@ -13,6 +13,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const health = await client.health(member.id)
+
         const embedreg1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -22,6 +24,16 @@ module.exports = {
         .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 80) return message.channel.send(embedhealth1)
 
         const banned = await client.banacc(member.id)
 
@@ -37,6 +49,12 @@ module.exports = {
 
         const bankrob = await client.bankrob(member.id)
 
+        const name = await client.name(member.id)
+
+        const jobprog = await client.jobprogress(member.id)
+
+        const energy = await client.energy(member.id)
+
         const robprog = await client.robprog(member.id)
 
         if(bankrob == 0) return message.channel.send('Вы не можете приступить к первой фазе пока не начали ограбление банка')
@@ -45,7 +63,19 @@ module.exports = {
 
         if(bankrob == 2) return message.channel.send('Вы не можете приступить к третьей фазе пока не начали ограбление банка')
 
-        if(robprog == 10) return message.channel.send('Вы успешно ограбили банк и получили вознаграждение')+client.add(member.id, 50000)+client.addbankrob(member.id, 0)+client.addrobprog(member.id, -10)
+        const embedend = new MessageEmbed()
+        
+        .setTitle('Ограбление банка!')
+        .setColor('GREEN')
+        .setDescription(`${name}, Вы успешно ограбили банк и заработали:\n
+        - Валюта - 50.000$\n
+        Было потрачено:\n
+        - 20 единиц энергии\n- 50 рабочего прогресса\n
+        Следующее ограбление можно будет через 24 часа, отдыхайте!`)
+        .setTimestamp()
+        .setFooter('')
+        
+        if(robprog == 10) return message.channel.send(embedend)+client.add(member.id, 50000)+client.addbankrob(member.id, 0)+client.addrobprog(member.id, -10)+client.addjp(member.id, -50)+client.addenergy(member.id, -20)
 
         const result = Math.floor(Math.random() * 6) + 1;
 

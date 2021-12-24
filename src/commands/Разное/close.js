@@ -9,7 +9,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
 
-        const categoryID = message.member.guild.channels.cache.find(c => c.name == "TICKETS")
+        const categoryID = message.member.guild.channels.cache.find(c => c.name == "ТИКЕТЫ")
     
         if(!categoryID) return;
     

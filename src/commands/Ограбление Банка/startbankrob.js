@@ -2,6 +2,7 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'ограб-начать',
+    cooldown: 1000 * 60 * 60 * 24,
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -13,6 +14,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const health = await client.health(member.id)
+
         const embedreg1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -22,6 +25,16 @@ module.exports = {
         .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 80) return message.channel.send(embedhealth1)
 
         const banned = await client.banacc(member.id)
 
@@ -52,7 +65,9 @@ module.exports = {
         после чего отправиться в банк и начать вторую фазу.\n
         Вторая фаза ограбления это само ограбление, заход в здание, взломы сейфов и получение денег.\n
         Ну и третья фаза это покинуть здание банка и отправиться в свой склад чтобы спрятать украденные деньги.\n
-        Но учтите тот момент, что при ограблении банка Ваш рабочий прогресс будет снижен на 50, не зависимо от того сколько его у Вас. При нулевом значении рабочего прогресса у Вас будет по логике **-50 JP**\nПриятного ограбления :)`)
+        Но учтите тот момент, что при ограблении банка Ваш рабочий прогресс будет снижен на 50, не зависимо от того сколько его у Вас. При нулевом значении рабочего прогресса у Вас будет по логике **-50 JP**\n
+        \nЧтобы начать процесс ограбления введите команду - **!ограб-старт**
+        Приятного ограбления :)`)
         .setTimestamp()
         .setFooter('')
         

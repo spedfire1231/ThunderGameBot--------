@@ -11,15 +11,15 @@ module.exports = {
 
         const member = message.mentions.members.first() || message.member
 
-        let amount = args[0]
-
         const bitcoins = await client.bitcoins(member.id)
 
         const regist = await client.reg(member.id)
 
+        const health = await client.health(member.id)
+
         const banned = await client.banacc(member.id)
 
-        const curse = await client.curs(member.id, curse)
+        const curs = await client.curse()
 
         const bal = await client.bal(member.id)
 
@@ -35,6 +35,16 @@ module.exports = {
 
         if(regist === 0) return message.channel.send(embedreg1)
 
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 30) return message.channel.send(embedhealth1)
+
         const embedban1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -45,18 +55,6 @@ module.exports = {
 
         if(banned === 1) return message.channel.send(embedban1)
 
-        const embed = new MessageEmbed()
-
-        .setTitle('Подсказка!')
-        .setColor('GREEN')
-        .setDescription('Введите число BTC которое хотите перевести в валюту!')
-        .setTimestamp()
-        .setFooter('')
-
-        if(!amount || amount == 0) return message.channel.send(embed)
-
-        if(args[0].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
-
         const embednocash = new MessageEmbed()
     
         .setTitle('Подсказка! THUNDER CENTRAL BANK')
@@ -65,40 +63,20 @@ module.exports = {
         .setTimestamp()
         .setFooter('')
     
-        if (bitcoins < amount) return message.channel.send(embednocash)
-
-        const embednum = new MessageEmbed()
-
-        .setTitle('💡 Подсказка!')
-        .setColor('RANDOM')
-        .setDescription('Пожалуйста, введите число, а не символ!')
-        .setTimestamp()
-        .setFooter('')
-    
-        if(isNaN(args[0])) return message.channel.send(embednum)
-
-        const embedsuccessname = new MessageEmbed()
-
-        .setTitle('Успешно!')
-        .setColor('GREEN')
-        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${amount*curse-amount*1000}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*45713}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!
-        \n\n\nУ Вас не установлен никнейм, сделать вы его можете командой **!addname**`)
-        .setTimestamp()
-        .setFooter('')
-
-        if(name === 'unnamed') return message.channel.send(embedsuccessname)
+        if (bitcoins <= 0) return message.channel.send(embednocash)
 
         const embedsuccess = new MessageEmbed()
 
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`Вы успешно обменяли **${amount} BTC** на **${amount*curs-amount*1000}$**\n\nПосле обмена Ваш баланс был изменён:\n В Вашем кошельке - **${bal}$** | + **${amount*curse-amount*1000}$**\n BTC - **${bitcoins} BTC** | - **${amount} BTC**\n Желаем Вам приятной игры!`)
+        .setDescription(`Вы успешно обменяли **1 BTC** на **${curs-1000}$**
+        \n Желаем Вам приятной игры!`)
         .setTimestamp()
         .setFooter('')
 
         message.channel.send(embedsuccess)
 
-        client.rmvbitcoins(member.id, amount)+client.add(member.id, curse-1000)
+        client.rmvbitcoins(member.id, 1)+client.add(member.id, curs-1000)
 
     }
 }

@@ -1,7 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'биткоин-купить',
+    name: 'продать-фишки',
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -11,19 +11,17 @@ module.exports = {
 
         const member = message.mentions.members.first() || message.member
 
-        const bitcoins = await client.bitcoins(member.id)
-
         const regist = await client.reg(member.id)
 
         const health = await client.health(member.id)
-
-        const banned = await client.banacc(member.id)
 
         const bal = await client.bal(member.id)
 
         const name = await client.name(member.id)
 
-        const curs = await client.curse()
+        const stavka = await client.stavka(member.id)
+
+        const banned = await client.banacc(member.id)
 
         const embedreg1 = new MessageEmbed()
 
@@ -43,7 +41,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('')
 
-        if(health <= 30) return message.channel.send(embedhealth1)
+        if(health <= 50) return message.channel.send(embedhealth1)
 
         const embedban1 = new MessageEmbed()
 
@@ -55,28 +53,46 @@ module.exports = {
 
         if(banned === 1) return message.channel.send(embedban1)
 
+        let setstavka = args[0]
+
+        const casinopool = parseInt(setstavka)
+
+        if(!setstavka) return message.channel.send('Укажите количество фишек для игры в казино')
+
+        const embednum = new MessageEmbed()
+
+        .setTitle('💡 Подсказка! THUNDER CASINO 💡')
+        .setColor('RANDOM')
+        .setDescription('Пожалуйста, введите число, а не символ которое хотите преобрести!')
+        .setTimestamp()
+        .setFooter('')
+    
+        if(isNaN(args[0])) return message.channel.send(embednum)
+    
+        if(args[0].includes('-')) return message.channel.send('Вы не можете положить деньги в минус')
+    
         const embednocash = new MessageEmbed()
     
-        .setTitle('Подсказка! THUNDER CENTRAL BANK')
+        .setTitle('💡 Подсказка! THUNDER CASINO 💡')
         .setColor('RANDOM')
-        .setDescription(`У Вас недостаточно средств! Ваш баланс на момент ввода команды **${bal}$**!`)
+        .setDescription(`У Вас недостаточно фишек!`)
         .setTimestamp()
         .setFooter('')
     
-        if (bal < curs) return message.channel.send(embednocash)
+        if (parseInt(args[0]) > stavka) return message.channel.send(embednocash)
 
-        const embedsuccess = new MessageEmbed()
-
+        const embed = new MessageEmbed()
+        
         .setTitle('Успешно!')
         .setColor('GREEN')
-        .setDescription(`${name}, Вы успешно купили **1 BTC** за **${curs}$**\n
-        Желаем Вам приятной игры!`)
+        .setDescription(`${name}, Вы продали **${setstavka}** фишек для игры в казино.\n На Ваш счёт зачислено **${setstavka*1300}$**`)
         .setTimestamp()
         .setFooter('')
+        
+        message.channel.send(embed)
 
-        message.channel.send(embedsuccess)
-
-        client.addbitcoins(member.id, 1)+client.rmv(member.id, curs)
+        client.add(member.id, casinopool*1300)+client.addstavka(member.id, -casinopool)
+        
 
     }
 }

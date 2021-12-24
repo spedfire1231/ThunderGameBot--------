@@ -9,7 +9,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
 
-        const categoryID = message.member.guild.channels.cache.find(c => c.name == "TICKETS")
+        const categoryID = message.member.guild.channels.cache.find(c => c.name == "ТИКЕТЫ")
 
         const member = message.mentions.members.first() || message.member
     
@@ -35,7 +35,7 @@ module.exports = {
     
         if(ticketexist) return;
     
-        message.guild.channels.create(userName.toLowerCase() + "-" + userDiscriminator, {type: 'text'}).then(
+        message.guild.channels.create('ТИКЕТ-'+userName.toLowerCase() + "." + userDiscriminator, {type: 'text'}).then(
             (createdChannel) => {
     
                 createdChannel.setParent(categoryID).then(
@@ -60,9 +60,12 @@ module.exports = {
                         const ticketEmbed = new MessageEmbed()
 
 
-                        .setTitle(`Ваш тикет! Здравствуйте, ${name}`)
+                        .setTitle(`🔒 Здравствуйте, ${name}`)
                         .setColor('BLUE')
-                        .setDescription('Напишите сюда Ваш вопрос/обращение и в ближайшее время разработчик его рассмотрит и даст ответ!')
+                        .setDescription(`Напишите сюда Ваш вопрос/обращение и в ближайшее время разработчик его рассмотрит и даст ответ!\n
+                        
+                        ⛔ Запрещено:\n
+                        1. Задавать вопросы не касающиеся бота - закрытие тикета\n2. Оскорбления - удаление тикета + игровая блокировка\n3. Просьба выдачи средств, исключение если это за одобреную жалобу на игрока - удаление тикета\n4. Многократное открытие тикетов после удаления в случае нарушения - удаление тикета + блокировка игрового аккаунта.`)
                         .setTimestamp()
                         .setFooter('Версия - 1.1')
 

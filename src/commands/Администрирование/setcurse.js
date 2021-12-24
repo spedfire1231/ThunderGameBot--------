@@ -18,6 +18,8 @@ module.exports = {
 
         client.addcurse(client.member, result)
 
+        message.channel.send('@everyone')
+
         const embed = new MessageEmbed()
         
         .setTitle('Курс Bitcoin')

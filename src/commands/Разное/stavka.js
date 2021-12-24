@@ -1,7 +1,7 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'ставка',
+    name: 'купить-фишки',
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -12,6 +12,8 @@ module.exports = {
         const member = message.mentions.members.first() || message.member
 
         const regist = await client.reg(member.id)
+
+        const health = await client.health(member.id)
 
         const bal = await client.bal(member.id)
 
@@ -29,6 +31,16 @@ module.exports = {
 
         if(regist === 0) return message.channel.send(embedreg1)
 
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 50) return message.channel.send(embedhealth1)
+
         const embedban1 = new MessageEmbed()
 
         .setTitle('Ошибка!')
@@ -40,6 +52,8 @@ module.exports = {
         if(banned === 1) return message.channel.send(embedban1)
 
         let setstavka = args[0]
+
+        const casinopool = parseInt(setstavka)
 
         if(!setstavka) return message.channel.send('Укажите количество фишек для игры в казино')
 
@@ -75,7 +89,7 @@ module.exports = {
         
         message.channel.send(embed)
 
-        client.add(member.id, -setstavka*1300)+client.addstavka(member.id, setstavka)
+        client.add(member.id, -casinopool*1300)+client.addstavka(member.id, casinopool)
         
 
     }

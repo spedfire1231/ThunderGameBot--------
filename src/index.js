@@ -72,6 +72,172 @@ client.addenergy = (userEnergy, energy) => {
     }) 
 }
 
+// Строительство
+
+client.doski = (userDoski) => new Promise(async ful =>{
+    const data = await schema.findOne({userDoski});
+    if(!data) return ful(0);
+    ful(data.doski);
+})
+
+client.kirp = (userKirp) => new Promise(async ful =>{
+    const data = await schema.findOne({userKirp});
+    if(!data) return ful(0);
+    ful(data.kirp);
+})
+
+client.cem = (userCem) => new Promise(async ful =>{
+    const data = await schema.findOne({userCem});
+    if(!data) return ful(0);
+    ful(data.cem);
+})
+
+client.bp = (userBp) => new Promise(async ful =>{
+    const data = await schema.findOne({userBp});
+    if(!data) return ful(0);
+    ful(data.bp);
+})
+
+client.house = (userHouse) => new Promise(async ful =>{
+    const data = await schema.findOne({userHouse});
+    if(!data) return ful(0);
+    ful(data.house);
+})
+
+client.addhouse = (userHouse, house) => {
+    schema.findOne({userHouse}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.house = house;
+        } else {
+            data = new schema({userHouse, house})
+        }
+        data.save();
+    })
+}
+
+client.health = (userHealth) => new Promise(async ful =>{
+    const data = await schema.findOne({userHealth});
+    if(!data) return ful(0);
+    ful(data.health);
+})
+
+client.addhealth = (userHealth, health) => {
+    schema.findOne({userHealth}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.health += health;
+        } else {
+            data = new schema({userHealth, health})
+        }
+        data.save();
+    })
+}
+
+client.obezb = (userObezb) => new Promise(async ful =>{
+    const data = await schema.findOne({userObezb});
+    if(!data) return ful(0);
+    ful(data.obezb);
+})
+
+client.addobezb = (userObezb, obezb) => {
+    schema.findOne({userObezb}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.obezb += obezb;
+        } else {
+            data = new schema({userObezb, obezb})
+        }
+        data.save();
+    })
+}
+
+client.tabl = (userTabl) => new Promise(async ful =>{
+    const data = await schema.findOne({userTabl});
+    if(!data) return ful(0);
+    ful(data.tabl);
+})
+
+client.addtabl = (userTabl, tabl) => {
+    schema.findOne({userTabl}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.tabl += tabl;
+        } else {
+            data = new schema({userTabl, tabl})
+        }
+        data.save();
+    })
+}
+
+client.anti = (userAnti) => new Promise(async ful =>{
+    const data = await schema.findOne({userAnti});
+    if(!data) return ful(0);
+    ful(data.anti);
+})
+
+client.addanti = (userAnti, anti) => {
+    schema.findOne({userAnti}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.anti += anti;
+        } else {
+            data = new schema({userAnti, anti})
+        }
+        data.save();
+    })
+}
+
+
+client.addbp = (userBp, bp) => {
+    schema.findOne({userBp}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.bp += bp;
+        } else {
+            data = new schema({userBp, bp})
+        }
+        data.save();
+    })
+}
+
+client.adddoski = (userDoski, doski) => {
+    schema.findOne({userDoski}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.doski += doski;
+        } else {
+            data = new schema({userDoski, doski})
+        }
+        data.save();
+    })
+}
+
+client.addkirp = (userKirp, kirp) => {
+    schema.findOne({userKirp}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.kirp += kirp;
+        } else {
+            data = new schema({userKirp, kirp})
+        }
+        data.save();
+        })
+}
+
+client.addcem = (userCem, cem) => {
+    schema.findOne({userCem}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.cem += cem;
+        } else {
+            data = new schema({userCem, cem})
+        }
+        data.save();
+        })
+}
+
+
 client.banacc = (userBannedacc) => new Promise(async ful =>{
     const data = await schema.findOne({userBannedacc});
     if(!data) return ful(0);
@@ -90,9 +256,29 @@ client.addstavka = (userStavka, stavka) => {
     schema.findOne({userStavka}, async(err, data) => {
         if(err) throw err;
         if(data) {
-            data.stavka = stavka;
+            data.stavka += stavka;
         } else {
             data = new schema({userStavka, stavka})
+        }
+        data.save();
+    }) 
+}
+
+// Блэк Джек
+
+client.bd = (userBd) => new Promise(async ful =>{
+    const data = await schema.findOne({userBd});
+    if(!data) return ful(0);
+    ful(data.bd);
+})
+
+client.addbd = (userBd, bd) => {
+    schema.findOne({userBd}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.bd += bd;
+        } else {
+            data = new schema({userBd, bd})
         }
         data.save();
     }) 
@@ -196,6 +382,43 @@ client.addbankrob = (userBankRob, bankrob) => {
             data.bankrob = bankrob;
         } else {
             data = new schema({userBankRob, bankrob})
+        }
+        data.save();
+    }) 
+}
+
+// авто
+client.carcolor = (userCarcolor) => new Promise(async ful =>{
+    const data = await schema.findOne({userCarcolor});
+    if(!data) return ful(0);
+    ful(data.carcolor);
+})
+
+client.addcarcolor = (userCarcolor, carcolor) => {
+    schema.findOne({userCarcolor}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.carcolor = carcolor;
+        } else {
+            data = new schema({userCarcolor, carcolor})
+        }
+        data.save();
+    }) 
+}
+
+client.car = (userCar) => new Promise(async ful =>{
+    const data = await schema.findOne({userCar});
+    if(!data) return ful(0);
+    ful(data.car);
+})
+
+client.addcar = (userCar, car) => {
+    schema.findOne({userCar}, async(err, data) => {
+        if(err) throw err;
+        if(data) {
+            data.car = car;
+        } else {
+            data = new schema({userCar, car})
         }
         data.save();
     }) 

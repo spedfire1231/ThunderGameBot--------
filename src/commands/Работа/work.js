@@ -15,6 +15,8 @@ module.exports = {
 
         const regist = await client.reg(member.id)
 
+        const health = await client.health(member.id)
+
         const banned = await client.banacc(member.id)
 
         const embedreg1 = new MessageEmbed()
@@ -26,6 +28,16 @@ module.exports = {
         .setFooter('')
 
         if(regist === 0) return message.channel.send(embedreg1)
+
+        const embedhealth1 = new MessageEmbed()
+
+        .setTitle('Ошибка!')
+        .setColor('RED')
+        .setDescription('Ваше состояние здоровья не позволяет использовать данную команду!')
+        .setTimestamp()
+        .setFooter('')
+
+        if(health <= 20) return message.channel.send(embedhealth1)
 
         const embedban1 = new MessageEmbed()
 

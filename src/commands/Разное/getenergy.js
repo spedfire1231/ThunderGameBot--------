@@ -17,6 +17,8 @@ module.exports = {
 
         const vip = await client.vip(member.id)
 
+        const house = await client.house(member.id)
+
         const name = await client.name(member.id)
 
         const banned = await client.banacc(member.id)
@@ -62,6 +64,17 @@ module.exports = {
         .setFooter(``)
         
         if(vip == 1) return message.channel.send(embed1)+client.addenergy(member.id, 40)
+
+        const embed1house = new MessageEmbed()
+        
+        .setTitle('[VIP] Получена Энергия!')
+        .setColor('BLUE')
+        .setDescription(`${name}, Вы получили **60 энергии** так как у Вас привелегия - **VIP + Имеется Дом**, теперь Вы можете начать или продолжить работать либо снова ограбить банк.\n
+        Следующий раз Вы сможете получить энергию через 6 часов`)
+        .setTimestamp()
+        .setFooter(``)
+        
+        if(vip == 1 & house == 1) return message.channel.send(embed1house)+client.addenergy(member.id, 60)
         
 
     }
